@@ -5,9 +5,10 @@
 ## Pipeline Overview
 
 ```
-01_ingest.py  →  nvd_cve.db         (raw NVD data, incremental)
-02_filter.py  →  sdwan_analysis.db  (SD-WAN filtered CVEs)
-04_excel_report.py reads sdwan_analysis.db → sdwan_report.xlsx
+01_ingest.py       →  nvd_cve.db      (raw NVD data, incremental)
+02_filter.py       →  analysis.db     (SD-WAN filtered CVEs)
+03_analyze.py      →  reports/*.png   (charts and CSV exports)
+04_excel_report.py →  sdwan_report.xlsx
 ```
 
 ### Incremental design
@@ -34,13 +35,13 @@ export NVD_API_KEY=your-key-here
 
 ```bash
 # Default: 2015 to current year
-python 01_ingest.py
+python3 01_ingest.py
 
-# Custom range
-python 01_ingest.py --start 2015 --end 2025
+# Custom start year
+python3 01_ingest.py --start 2015
 
-# Resume a partially-completed run
-python 01_ingest.py --resume
+# Force re-fetch everything from scratch
+python3 01_ingest.py --full
 ```
 
 This writes `nvd_cve.db` with a `raw_cves` table (~150k–300k rows for 10 years).  
@@ -49,22 +50,31 @@ Without an API key, expect ~3–4 hours. With an API key: ~20–30 min.
 ### Step 2 — Filter for SD-WAN
 
 ```bash
-python 02_filter.py
+python3 02_filter.py
 
-# With LLM disambiguation (removes Cisco/Fortinet false positives)
+# With LLM disambiguation (removes false positives)
 # Requires: export ANTHROPIC_API_KEY=your-key
-python 02_filter.py --use-ai
+python3 02_filter.py --use-ai
 ```
 
-Writes `sdwan_cves` table into the same `nvd_cve.db`.
+Writes `filtered_cves` table into `analysis.db`.
 
 ### Step 3 — Analyze & visualize
 
 ```bash
-python 03_analyze.py
+python3 03_analyze.py
 
 # Custom output dir
-python 03_analyze.py --out-dir reports/2025-run/
+python3 03_analyze.py --out-dir reports/2025-run/
+```
+
+### Step 4 — Generate Excel report
+
+```bash
+python3 04_excel_report.py
+
+# Custom DB or output path
+python3 04_excel_report.py --db analysis.db --out sdwan_report.xlsx
 ```
 
 ## Outputs
@@ -78,11 +88,12 @@ python 03_analyze.py --out-dir reports/2025-run/
 | `reports/sdwan_vendor_severity.png` | Per-vendor severity stacked bar |
 | `reports/sdwan_summary.csv` | Full CVE export |
 | `reports/sdwan_yearly_summary.csv` | Year-level aggregation |
+| `sdwan_report.xlsx` | Excel report with per-vendor sheets and charts |
 
 ## Vendors Tracked
 
 - Cisco (SD-WAN / Viptela / Catalyst SD-WAN)
-- VMware / Broadcom (VeloCloud)
+- Arista (VeloCloud)
 - Fortinet (FortiGate SD-WAN)
 - Palo Alto Networks (Prisma SD-WAN / CloudGenix)
 - Juniper (Session Smart Router / 128 Technology)

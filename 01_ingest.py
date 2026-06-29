@@ -110,27 +110,30 @@ def get_json(session: requests.Session, params: dict, api_key: str | None) -> di
     qs = "&".join(f"{k}={v}" for k, v in params.items())
     url = f"{BASE_URL}?{qs}"
 
-    for attempt in range(5):
+    max_attempts = 10
+    for attempt in range(max_attempts):
         try:
-            r = session.get(url, headers=headers, timeout=60)
+            r = session.get(url, headers=headers, timeout=120)
             if r.status_code == 200:
                 return r.json()
             if r.status_code == 403:
-                print("  [WARN] 403 — rate limited, sleeping 35s")
-                time.sleep(35)
+                wait = 35 * (attempt + 1)
+                print(f"  [WARN] 403 — rate limited, sleeping {wait}s")
+                time.sleep(wait)
             elif r.status_code == 503:
-                wait = 10 * (attempt + 1)
+                wait = 15 * (attempt + 1)
                 print(f"  [WARN] 503 — sleeping {wait}s")
                 time.sleep(wait)
             else:
-                print(f"  [WARN] HTTP {r.status_code} (attempt {attempt+1}/5)")
-                print(f"         URL: {url}")
-                time.sleep(5)
+                print(f"  [WARN] HTTP {r.status_code} (attempt {attempt+1}/{max_attempts})")
+                time.sleep(10)
         except requests.RequestException as e:
-            print(f"  [ERR] {e} (attempt {attempt+1}/5)")
-            time.sleep(10)
+            # Exponential backoff: 15s, 30s, 60s, 120s …
+            wait = min(15 * (2 ** attempt), 300)
+            print(f"  [ERR] {e} (attempt {attempt+1}/{max_attempts}, retry in {wait}s)")
+            time.sleep(wait)
 
-    raise RuntimeError(f"Failed after 5 attempts — URL: {url}")
+    raise RuntimeError(f"Failed after {max_attempts} attempts — URL: {url}")
 
 
 def fetch_window(

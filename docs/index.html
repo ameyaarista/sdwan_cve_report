@@ -6,17 +6,17 @@
   <title>SD-WAN CVE Trend Report</title>
   <style>
     :root {
-      --bg:        #0d1117;
-      --surface:   #161b22;
-      --border:    #30363d;
-      --accent:    #238636;
-      --accent-h:  #2ea043;
-      --blue:      #1f6feb;
-      --text:      #e6edf3;
-      --muted:     #8b949e;
-      --red:       #da3633;
-      --amber:     #d29922;
-      --green:     #3fb950;
+      --bg:        #f0f4f8;
+      --surface:   #ffffff;
+      --border:    #d0dce8;
+      --accent:    #0066cc;
+      --accent-h:  #0052a3;
+      --blue:      #0066cc;
+      --text:      #1a2b3c;
+      --muted:     #5a7a96;
+      --red:       #d93025;
+      --amber:     #c77700;
+      --green:     #1a7f37;
       --radius:    8px;
     }
 
@@ -31,13 +31,14 @@
 
     /* ── Header ── */
     header {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
+      background: #003d7a;
+      border-bottom: 1px solid #002d5c;
       padding: 24px 32px;
       display: flex;
       align-items: center;
       gap: 16px;
     }
+    header h1, header p { color: #ffffff; }
     header svg { flex-shrink: 0; }
     header h1  { font-size: 1.4rem; font-weight: 600; }
     header p   { color: var(--muted); font-size: 0.9rem; margin-top: 2px; }
@@ -193,10 +194,11 @@
 
     /* ── Footer ── */
     footer {
-      border-top: 1px solid var(--border);
+      background: #003d7a;
+      border-top: 1px solid #002d5c;
       padding: 20px 32px;
       font-size: 0.8rem;
-      color: var(--muted);
+      color: #a8c4e0;
       text-align: center;
     }
     footer a { color: var(--blue); text-decoration: none; }
@@ -207,7 +209,7 @@
 
 <header>
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-    <rect width="32" height="32" rx="8" fill="#238636"/>
+    <rect width="32" height="32" rx="8" fill="#0066cc"/>
     <path d="M8 22L14 10L20 18L23 14L26 22H8Z" fill="white" opacity="0.9"/>
     <circle cx="23" cy="11" r="3" fill="#56d364"/>
   </svg>

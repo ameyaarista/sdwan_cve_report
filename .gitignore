@@ -1,0 +1,23 @@
+# Databases (too large / rebuilt by pipeline)
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Local report outputs (the workflow saves to docs/)
+sdwan_report.xlsx
+reports/
+
+# macOS
+.DS_Store
+
+# Environment / secrets
+.env

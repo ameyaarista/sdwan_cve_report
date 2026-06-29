@@ -1,0 +1,75 @@
+name: Update SD-WAN CVE Report
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # Every Monday at 06:00 UTC
+  workflow_dispatch:        # Allow manual trigger from GitHub Actions tab
+
+permissions:
+  contents: write           # Needed to commit the report back to the repo
+
+jobs:
+  build-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # ── Restore cached databases so incremental ingest works ──────────────
+      - name: Restore cached databases
+        uses: actions/cache@v4
+        with:
+          path: |
+            nvd_cve.db
+            analysis.db
+          key: cve-databases-${{ runner.os }}
+          restore-keys: |
+            cve-databases-
+
+      # ── Pipeline ──────────────────────────────────────────────────────────
+      - name: Step 1 — Ingest CVEs from NVD
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+        run: python3 01_ingest.py
+
+      - name: Step 2 — Filter for SD-WAN vendors
+        run: python3 02_filter.py
+
+      - name: Step 3 — Generate charts
+        run: python3 03_analyze.py --out-dir docs/charts
+
+      - name: Step 4 — Generate Excel report
+        run: python3 04_excel_report.py --out docs/sdwan_report.xlsx
+
+      # ── Stamp last-updated date for the web page ──────────────────────────
+      - name: Write last-updated timestamp
+        run: |
+          echo "{\"updated\": \"$(date -u '+%B %d, %Y')\"}" > docs/last_updated.json
+
+      # ── Save updated DBs back to cache ────────────────────────────────────
+      - name: Save updated databases to cache
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            nvd_cve.db
+            analysis.db
+          key: cve-databases-${{ runner.os }}-${{ github.run_id }}
+
+      # ── Commit report + charts back to repo ───────────────────────────────
+      - name: Commit and push updated report
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/sdwan_report.xlsx docs/charts/ docs/last_updated.json
+          git diff --cached --quiet || git commit -m "chore: update SD-WAN CVE report [$(date -u '+%Y-%m-%d')]"
+          git push

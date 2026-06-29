@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SD-WAN CVE Trend Report</title>
+  <style>
+    :root {
+      --bg:        #0d1117;
+      --surface:   #161b22;
+      --border:    #30363d;
+      --accent:    #238636;
+      --accent-h:  #2ea043;
+      --blue:      #1f6feb;
+      --text:      #e6edf3;
+      --muted:     #8b949e;
+      --red:       #da3633;
+      --amber:     #d29922;
+      --green:     #3fb950;
+      --radius:    8px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    header svg { flex-shrink: 0; }
+    header h1  { font-size: 1.4rem; font-weight: 600; }
+    header p   { color: var(--muted); font-size: 0.9rem; margin-top: 2px; }
+
+    /* ── Layout ── */
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* ── Hero card ── */
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+    .hero-text h2 { font-size: 1.5rem; margin-bottom: 8px; }
+    .hero-text p  { color: var(--muted); max-width: 520px; }
+
+    .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+    .badge {
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .badge-red    { background: rgba(218,54,51,0.15); color: #f85149; border: 1px solid rgba(218,54,51,0.4); }
+    .badge-amber  { background: rgba(210,153,34,0.15); color: #e3b341; border: 1px solid rgba(210,153,34,0.4); }
+    .badge-green  { background: rgba(63,185,80,0.15); color: #56d364; border: 1px solid rgba(63,185,80,0.4); }
+    .badge-blue   { background: rgba(31,111,235,0.15); color: #58a6ff; border: 1px solid rgba(31,111,235,0.4); }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+    .download-btn:hover { background: var(--accent-h); }
+
+    .last-updated {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    /* ── Section heading ── */
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+    }
+
+    /* ── Stats row ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+    }
+    .stat-card .label { font-size: 0.8rem; color: var(--muted); margin-bottom: 4px; }
+    .stat-card .value { font-size: 1.8rem; font-weight: 700; }
+    .stat-card .sub   { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+
+    /* ── Charts grid ── */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .chart-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .chart-card.wide { grid-column: 1 / -1; }
+    .chart-card img  { width: 100%; display: block; }
+    .chart-card p    { font-size: 0.8rem; color: var(--muted); padding: 10px 14px; border-top: 1px solid var(--border); }
+
+    /* ── Vendors table ── */
+    .vendors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .vendor-chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .vendor-chip::before {
+      content: "";
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex-shrink: 0;
+    }
+
+    /* ── How it works ── */
+    .pipeline {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .pipe-step {
+      text-align: center;
+      padding: 0 16px;
+    }
+    .pipe-step .icon { font-size: 1.4rem; margin-bottom: 4px; }
+    .pipe-step .name { font-size: 0.8rem; font-weight: 600; }
+    .pipe-step .desc { font-size: 0.72rem; color: var(--muted); }
+    .pipe-arrow { color: var(--muted); font-size: 1.2rem; padding: 0 4px; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 32px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+    footer a { color: var(--blue); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<header>
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <rect width="32" height="32" rx="8" fill="#238636"/>
+    <path d="M8 22L14 10L20 18L23 14L26 22H8Z" fill="white" opacity="0.9"/>
+    <circle cx="23" cy="11" r="3" fill="#56d364"/>
+  </svg>
+  <div>
+    <h1>SD-WAN CVE Trend Report</h1>
+    <p>Automated vulnerability analysis sourced from NIST NVD · Updated weekly</p>
+  </div>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-text">
+      <h2>Download the latest report</h2>
+      <p>
+        Comprehensive analysis of CVEs affecting enterprise SD-WAN vendors from 2015 to present.
+        Includes per-vendor breakdowns, severity trends, CWE analysis, and full CVE detail tables.
+      </p>
+      <div class="badge-row">
+        <span class="badge badge-red">CRITICAL</span>
+        <span class="badge badge-amber">HIGH</span>
+        <span class="badge badge-green">MEDIUM / LOW</span>
+        <span class="badge badge-blue">10+ Vendors</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+      <a class="download-btn" href="sdwan_report.xlsx" download>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z"/>
+          <path d="M7.25 7.689V2a.75.75 0 0 1 1.5 0v5.689l1.97-1.97a.749.749 0 1 1 1.06 1.06l-3.25 3.25a.749.749 0 0 1-1.06 0L4.22 6.779a.749.749 0 1 1 1.06-1.06l1.97 1.97Z"/>
+        </svg>
+        Download Excel Report
+      </a>
+      <p class="last-updated" id="last-updated">Loading...</p>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <h3>At a glance</h3>
+  <div class="stats">
+    <div class="stat-card">
+      <div class="label">Data source</div>
+      <div class="value" style="font-size:1.1rem;margin-top:4px">NIST NVD</div>
+      <div class="sub">API 2.0 · nvd.nist.gov</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Coverage</div>
+      <div class="value">2015</div>
+      <div class="sub">to present</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Vendors tracked</div>
+      <div class="value">10</div>
+      <div class="sub">SD-WAN product families</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Refresh cadence</div>
+      <div class="value" style="font-size:1.1rem;margin-top:4px">Weekly</div>
+      <div class="sub">Every Monday · GitHub Actions</div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <h3>Preview charts</h3>
+  <div class="charts-grid">
+    <div class="chart-card wide">
+      <img src="charts/sdwan_cve_trend.png" alt="Annual CVE trend by severity" onerror="this.parentElement.style.display='none'"/>
+      <p>Annual CVE count stacked by severity (Critical / High / Medium / Low)</p>
+    </div>
+    <div class="chart-card">
+      <img src="charts/sdwan_vendor_heatmap.png" alt="Vendor × Year heatmap" onerror="this.parentElement.style.display='none'"/>
+      <p>CVE count per vendor per year</p>
+    </div>
+    <div class="chart-card">
+      <img src="charts/sdwan_vendor_severity.png" alt="Vendor severity breakdown" onerror="this.parentElement.style.display='none'"/>
+      <p>Severity breakdown by vendor (all years combined)</p>
+    </div>
+    <div class="chart-card">
+      <img src="charts/sdwan_severity_pie.png" alt="Severity distribution pie" onerror="this.parentElement.style.display='none'"/>
+      <p>Overall severity distribution across all vendors</p>
+    </div>
+    <div class="chart-card">
+      <img src="charts/sdwan_top_cwes.png" alt="Top CWEs" onerror="this.parentElement.style.display='none'"/>
+      <p>Top 15 weakness types (CWE) across all SD-WAN CVEs</p>
+    </div>
+  </div>
+
+  <!-- How it works -->
+  <h3>How it works</h3>
+  <div class="pipeline">
+    <div class="pipe-step">
+      <div class="icon">🌐</div>
+      <div class="name">NIST NVD</div>
+      <div class="desc">API 2.0 source</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">
+      <div class="icon">⬇️</div>
+      <div class="name">01_ingest.py</div>
+      <div class="desc">Incremental fetch</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">
+      <div class="icon">🔍</div>
+      <div class="name">02_filter.py</div>
+      <div class="desc">SD-WAN classification</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">
+      <div class="icon">📊</div>
+      <div class="name">03_analyze.py</div>
+      <div class="desc">Chart generation</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">
+      <div class="icon">📥</div>
+      <div class="name">04_excel_report.py</div>
+      <div class="desc">Excel report</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">
+      <div class="icon">🤖</div>
+      <div class="name">GitHub Actions</div>
+      <div class="desc">Runs every Monday</div>
+    </div>
+  </div>
+
+  <!-- Vendors -->
+  <h3>Vendors tracked</h3>
+  <div class="vendors-grid">
+    <div class="vendor-chip">Cisco (Viptela / Catalyst)</div>
+    <div class="vendor-chip">Fortinet (FortiGate SD-WAN)</div>
+    <div class="vendor-chip">Arista (VeloCloud)</div>
+    <div class="vendor-chip">Palo Alto (Prisma SD-WAN)</div>
+    <div class="vendor-chip">Juniper (Session Smart)</div>
+    <div class="vendor-chip">HPE Aruba (EdgeConnect)</div>
+    <div class="vendor-chip">Versa Networks</div>
+    <div class="vendor-chip">Cradlepoint</div>
+    <div class="vendor-chip">Aryaka</div>
+    <div class="vendor-chip">Citrix (NetScaler SD-WAN)</div>
+    <div class="vendor-chip">Barracuda (CloudGen WAN)</div>
+  </div>
+
+</main>
+
+<footer>
+  <p>
+    Data sourced from <a href="https://nvd.nist.gov" target="_blank">NIST National Vulnerability Database</a> ·
+    Source code on <a href="https://github.com/ameyaarista/sdwan_cve_report" target="_blank">GitHub</a> ·
+    Report generated automatically every Monday
+  </p>
+</footer>
+
+<script>
+  fetch("last_updated.json")
+    .then(r => r.json())
+    .then(d => {
+      document.getElementById("last-updated").textContent = "Last updated: " + d.updated;
+    })
+    .catch(() => {
+      document.getElementById("last-updated").textContent = "";
+    });
+</script>
+
+</body>
+</html>

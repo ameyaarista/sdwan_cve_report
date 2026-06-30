@@ -71,16 +71,27 @@ def is_relevant(description: str, vendors: list[str], family_cfg: dict) -> bool:
     default_check   = family_cfg["default_check"]
     generic         = family_cfg.get("generic_pattern")
 
-    # Generic catch-all (e.g. "sd-wan" in description)
-    if generic and generic.search(description) and "Generic" in vendors:
-        return True
-
+    # Strip vendors whose exclude pattern fires — do this first so Generic
+    # catch-all cannot rescue a CVE that should be excluded
+    active_vendors = []
     for v in vendors:
         if v == "Generic":
+            active_vendors.append(v)
             continue
-        # Reject if description matches an exclude pattern for this vendor
         excl = vendor_excludes.get(v)
         if excl and excl.search(description):
+            continue          # drop this vendor entirely
+        active_vendors.append(v)
+
+    if not active_vendors:
+        return False
+
+    # Generic catch-all (e.g. "sd-wan" in description) — only after exclusions
+    if generic and generic.search(description) and "Generic" in active_vendors:
+        return True
+
+    for v in active_vendors:
+        if v == "Generic":
             continue
         if v in unambiguous:
             return True
@@ -89,6 +100,15 @@ def is_relevant(description: str, vendors: list[str], family_cfg: dict) -> bool:
             return True
 
     return False
+
+
+def filter_vendor_labels(vendors: list[str], description: str, family_cfg: dict) -> list[str]:
+    """Return vendors list with excluded vendors removed."""
+    vendor_excludes = family_cfg.get("vendor_excludes", {})
+    return [
+        v for v in vendors
+        if v == "Generic" or not (vendor_excludes.get(v) and vendor_excludes[v].search(description))
+    ]
 
 
 def vendor_labels(vendors: list[str]) -> str:
@@ -198,7 +218,7 @@ def run_family(family_key: str, family_cfg: dict, rows_raw, dst: sqlite3.Connect
         if not is_relevant(desc, vendors, family_cfg):
             continue
 
-        labels = vendor_labels(vendors)
+        labels = vendor_labels(filter_vendor_labels(vendors, desc, family_cfg))
         if not labels:          # skip Generic-only
             continue
 

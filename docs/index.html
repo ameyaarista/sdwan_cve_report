@@ -172,6 +172,61 @@
       flex-shrink: 0;
     }
 
+    /* ── Filter logic table ── */
+    .filter-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-bottom: 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .filter-table th {
+      background: #003d7a;
+      color: #ffffff;
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 600;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .filter-table td {
+      padding: 10px 14px;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.5;
+    }
+    .filter-table tr:last-child td { border-bottom: none; }
+    .filter-table tr:nth-child(even) td { background: #f7fafd; }
+    .filter-table .vendor-name {
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .filter-table .vendor-sub {
+      font-size: 0.72rem;
+      color: var(--muted);
+      display: block;
+      margin-top: 2px;
+    }
+    .kw { display: inline-block; background: #e8f0fa; color: #1a4a80;
+          border-radius: 4px; padding: 1px 6px; margin: 2px 2px 2px 0;
+          font-family: ui-monospace, monospace; font-size: 0.73rem; }
+    .excl { display: inline-block; background: #fdecea; color: #b71c1c;
+            border-radius: 4px; padding: 1px 6px; margin: 2px 2px 2px 0;
+            font-family: ui-monospace, monospace; font-size: 0.73rem; }
+    .check { display: inline-block; background: #e8f5e9; color: #1b5e20;
+             border-radius: 4px; padding: 1px 6px; margin: 2px 2px 2px 0;
+             font-family: ui-monospace, monospace; font-size: 0.73rem; }
+    .badge-unambig {
+      font-size: 0.68rem; font-weight: 700; padding: 2px 7px;
+      border-radius: 10px; background: #e3f2fd; color: #0d47a1;
+      white-space: nowrap;
+    }
+
     /* ── Footer ── */
     footer {
       background: #003d7a;
@@ -284,6 +339,154 @@
     <div class="vendor-chip">HPE Aruba (EdgeConnect)</div>
     <div class="vendor-chip">Versa Networks</div>
   </div>
+
+  <!-- Filter logic -->
+  <h3>Vendor filter logic</h3>
+  <table class="filter-table">
+    <thead>
+      <tr>
+        <th style="width:16%">Vendor</th>
+        <th style="width:34%">Match keywords</th>
+        <th style="width:30%">Secondary check (must also match)</th>
+        <th style="width:20%">Exclusions</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>
+          <span class="vendor-name">Cisco</span>
+          <span class="vendor-sub">Viptela · Catalyst SD-WAN</span>
+        </td>
+        <td>
+          <span class="kw">cisco sd-wan</span>
+          <span class="kw">viptela</span>
+          <span class="kw">cisco catalyst sd-wan</span>
+          <span class="kw">cisco ios-xe sd-wan</span>
+          <span class="kw">cisco vedge</span>
+          <span class="kw">vmanage</span>
+          <span class="kw">vsmart</span>
+          <span class="kw">vbond</span>
+        </td>
+        <td>Description must also contain an SD-WAN term:
+          <span class="check">sd-wan</span>
+          <span class="check">viptela</span>
+          <span class="check">vedge</span>
+          <span class="check">vmanage</span>
+          <span class="check">vsmart</span>
+          <span class="check">vbond</span>
+        </td>
+        <td>—</td>
+      </tr>
+
+      <tr>
+        <td>
+          <span class="vendor-name">Arista</span>
+          <span class="vendor-sub">VeloCloud · Broadcom SD-WAN</span>
+        </td>
+        <td>
+          <span class="kw">vmware sd-wan</span>
+          <span class="kw">velocloud</span>
+          <span class="kw">broadcom sd-wan</span>
+          <span class="kw">arista sd-wan</span>
+        </td>
+        <td><span class="badge-unambig">Exact match — no secondary check</span></td>
+        <td>—</td>
+      </tr>
+
+      <tr>
+        <td>
+          <span class="vendor-name">Fortinet</span>
+          <span class="vendor-sub">FortiGate · FortiOS · FortiSASE</span>
+        </td>
+        <td>
+          <span class="kw">fortigate</span>
+          <span class="kw">fortios</span>
+          <span class="kw">fortimanager</span>
+          <span class="kw">fortisase</span>
+          <span class="kw">fortinet</span>
+        </td>
+        <td>Must also match a networking/SD-WAN component:
+          <span class="check">ipsec</span>
+          <span class="check">ssl-vpn</span>
+          <span class="check">bgp</span>
+          <span class="check">ospf</span>
+          <span class="check">wan</span>
+          <span class="check">sd-wan</span>
+          <span class="check">nat</span>
+          <span class="check">qos</span>
+          <span class="check">firewall</span>
+          <span class="check">sase</span>
+          <span class="check">zero-trust</span>
+          and others
+        </td>
+        <td>—</td>
+      </tr>
+
+      <tr>
+        <td>
+          <span class="vendor-name">Palo Alto Networks</span>
+          <span class="vendor-sub">Prisma SD-WAN · CloudGenix · PAN-OS</span>
+        </td>
+        <td>
+          <span class="kw">prisma sd-wan</span>
+          <span class="kw">cloudgenix</span>
+          <span class="kw">palo alto sd-wan</span>
+          <span class="kw">pan-os</span>
+          <span class="kw">palo alto networks</span>
+        </td>
+        <td>Must also match a networking/SD-WAN component:
+          <span class="check">ipsec</span>
+          <span class="check">vpn</span>
+          <span class="check">bgp</span>
+          <span class="check">ospf</span>
+          <span class="check">wan</span>
+          <span class="check">sd-wan</span>
+          <span class="check">pan-os</span>
+          <span class="check">zero-trust</span>
+          and others
+        </td>
+        <td>
+          <span class="excl">GlobalProtect</span>
+          <span class="excl">Global Protect</span>
+          <span class="excl">Cortex</span>
+          <span class="excl">Cortex XDR</span>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <span class="vendor-name">HPE Aruba</span>
+          <span class="vendor-sub">EdgeConnect · Silver Peak</span>
+        </td>
+        <td>
+          <span class="kw">silver peak</span>
+          <span class="kw">hpe edgeconnect</span>
+          <span class="kw">aruba edgeconnect</span>
+          <span class="kw">aruba sd-wan</span>
+          <span class="kw">edgeconnect sd-wan</span>
+        </td>
+        <td><span class="badge-unambig">Exact match — no secondary check</span></td>
+        <td>—</td>
+      </tr>
+
+      <tr>
+        <td>
+          <span class="vendor-name">Versa Networks</span>
+          <span class="vendor-sub">FlexVNF · VersaOS</span>
+        </td>
+        <td>
+          <span class="kw">versa networks</span>
+          <span class="kw">versa flexvnf</span>
+          <span class="kw">versa sd-wan</span>
+          <span class="kw">versaos</span>
+        </td>
+        <td><span class="badge-unambig">Exact match — no secondary check</span></td>
+        <td>—</td>
+      </tr>
+
+    </tbody>
+  </table>
 
 </main>
 

@@ -10,8 +10,7 @@ Usage:
 Outputs (in --out-dir):
     sdwan_cve_trend.png          — CVEs per year (total + by severity)
     sdwan_vendor_heatmap.png     — Vendor × Year CVE count heatmap
-    sdwan_severity_pie.png       — Overall severity breakdown
-    sdwan_top_cwes.png           — Top 15 weaknesses (CWE)
+    sdwan_vendor_year_bar.png    — Vendors on X-axis, stacked by year
     sdwan_vendor_severity.png    — Per-vendor severity stacked bar
     sdwan_summary.csv            — Full data export
     sdwan_yearly_summary.csv     — Year-level aggregation
@@ -155,63 +154,57 @@ def plot_vendor_heatmap(df: pd.DataFrame, out_dir: Path):
     print(f"[Chart] {out}")
 
 
-# ── Chart 3: Severity pie ─────────────────────────────────────────────────────
+# ── Chart 3: Vendor × Year stacked bar ───────────────────────────────────────
 
-def plot_severity_pie(df: pd.DataFrame, out_dir: Path):
-    counts = df["cvss_severity"].value_counts()
-    counts = counts.reindex([s for s in SEVERITY_ORDER if s in counts.index])
-
-    fig, ax = plt.subplots(figsize=(7, 7))
-    wedges, texts, autotexts = ax.pie(
-        counts.values,
-        labels=counts.index,
-        colors=[SEVERITY_COLORS[s] for s in counts.index],
-        autopct="%1.1f%%",
-        startangle=140,
-        wedgeprops={"edgecolor": "white", "linewidth": 1.5},
-    )
-    for t in autotexts:
-        t.set_fontsize(10)
-    ax.set_title("SD-WAN CVE Severity Distribution (All Years)", fontsize=13, fontweight="bold")
-
-    out = out_dir / "sdwan_severity_pie.png"
-    fig.savefig(out)
-    plt.close(fig)
-    print(f"[Chart] {out}")
-
-
-# ── Chart 4: Top CWEs ─────────────────────────────────────────────────────────
-
-def plot_top_cwes(df: pd.DataFrame, out_dir: Path, top_n: int = 15):
-    cwe_counts: dict[str, int] = defaultdict(int)
-    for val in df["weaknesses"].dropna():
-        for cwe in str(val).split(","):
-            cwe = cwe.strip()
-            if cwe:
-                cwe_counts[cwe] += 1
-
-    if not cwe_counts:
-        print("[Chart] No CWE data, skipping top-CWE chart")
+def plot_vendor_year_bar(df: pd.DataFrame, out_dir: Path):
+    """Stacked bar: vendors on X-axis, each segment = one year's CVE count."""
+    vdf = explode_vendors(df)
+    if vdf.empty:
         return
 
-    top = sorted(cwe_counts.items(), key=lambda x: x[1], reverse=True)[:top_n]
-    labels, values = zip(*top)
+    pivot = (
+        vdf.groupby(["vendor", "year"])
+        .size()
+        .unstack(fill_value=0)
+    )
+    # Sort vendors by total CVEs descending
+    pivot = pivot.loc[pivot.sum(axis=1).sort_values(ascending=False).index]
 
-    fig, ax = plt.subplots(figsize=(10, 7))
-    bars = ax.barh(list(reversed(labels)), list(reversed(values)), color="#4c72b0")
-    ax.bar_label(bars, padding=3, fontsize=9)
-    ax.set_title(f"Top {top_n} Weakness Types (CWE) in SD-WAN CVEs", fontsize=13, fontweight="bold")
-    ax.set_xlabel("Number of CVEs")
-    ax.set_xlim(0, max(values) * 1.15)
+    years = sorted(pivot.columns)
+    # Build a colour ramp from light to dark blue across years
+    cmap = plt.cm.get_cmap("Blues", len(years) + 3)
+    year_colors = {yr: cmap(i + 3) for i, yr in enumerate(years)}
+
+    fig, ax = plt.subplots(figsize=(13, 7))
+    bottom = None
+    for yr in years:
+        vals = pivot[yr]
+        ax.bar(pivot.index, vals, bottom=bottom,
+               color=year_colors[yr], label=str(yr), width=0.6)
+        bottom = vals if bottom is None else bottom + vals
+
+    # Total labels above each bar
+    totals = pivot.sum(axis=1)
+    for i, (vendor, total) in enumerate(totals.items()):
+        ax.text(i, total + 1, str(int(total)), ha="center", va="bottom",
+                fontsize=9, fontweight="bold", color="#333333")
+
+    ax.set_title("SD-WAN CVEs by Vendor and Year", fontsize=14, fontweight="bold")
+    ax.set_ylabel("Number of CVEs")
+    ax.set_xlabel("Vendor")
+    ax.legend(title="Year", loc="upper right", framealpha=0.8,
+              ncol=2 if len(years) > 8 else 1)
+    ax.yaxis.set_major_locator(ticker.MaxNLocator(integer=True))
+    plt.xticks(rotation=25, ha="right")
     plt.tight_layout()
 
-    out = out_dir / "sdwan_top_cwes.png"
+    out = out_dir / "sdwan_vendor_year_bar.png"
     fig.savefig(out)
     plt.close(fig)
     print(f"[Chart] {out}")
 
 
-# ── Chart 5: Vendor severity stacked bar ─────────────────────────────────────
+# ── Chart 4: Vendor severity stacked bar ─────────────────────────────────────
 
 def plot_vendor_severity(df: pd.DataFrame, out_dir: Path):
     vdf = explode_vendors(df)
@@ -300,8 +293,7 @@ def main():
 
     plot_annual_trend(df, out_dir)
     plot_vendor_heatmap(df, out_dir)
-    plot_severity_pie(df, out_dir)
-    plot_top_cwes(df, out_dir)
+    plot_vendor_year_bar(df, out_dir)
     plot_vendor_severity(df, out_dir)
     export_csvs(df, out_dir)
 

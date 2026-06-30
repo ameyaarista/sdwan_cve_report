@@ -12,8 +12,7 @@ __pycache__/
 venv/
 *.egg-info/
 
-# Local report outputs (ignore only at repo root, not inside docs/)
-/sdwan_report.xlsx
+# Local report outputs
 /reports/
 
 # macOS

@@ -172,7 +172,7 @@ def plot_vendor_year_bar(df: pd.DataFrame, out_dir: Path):
 
     years = sorted(pivot.columns)
     # Build a colour ramp from light to dark blue across years
-    cmap = plt.cm.get_cmap("Blues", len(years) + 3)
+    cmap = plt.colormaps["Blues"].resampled(len(years) + 3)
     year_colors = {yr: cmap(i + 3) for i, yr in enumerate(years)}
 
     fig, ax = plt.subplots(figsize=(13, 7))

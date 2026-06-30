@@ -85,6 +85,7 @@ _SDWAN_VENDORS = [
     ("Versa Networks", [
         r"versa\s+networks", r"versa\s+flexvnf",
         r"versa\s+sd[\s-]?wan", r"\bversaos\b",
+        r"\bversa\b",
     ]),
     ("Generic",     [r"\bsd[\s-]?wan\b"]),
 ]

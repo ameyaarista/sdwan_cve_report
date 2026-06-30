@@ -21,6 +21,8 @@ CVE-2017-7217,SDWAN,2017-04-14 14:59:00.277000+00:00,2017,Palo Alto Networks,4.3
 CVE-2017-7218,SDWAN,2017-04-14 14:59:00.307000+00:00,2017,Palo Alto Networks,7.8,HIGH,CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H,The Management Web Interface in Palo Alto Networks PAN-OS before 7.1.9 allows remote authenticated users to gain privileges via unspecified request parameters.,CWE-20,0,
 CVE-2017-7644,SDWAN,2017-04-29 00:59:00.167000+00:00,2017,Palo Alto Networks,6.5,MEDIUM,CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N,"The Management Web Interface in Palo Alto Networks PAN-OS before 6.1.17, 7.x before 7.0.15, and 7.1.x before 7.1.9 allows remote authenticated users to obtain sensitive information by leveraging incorrect permission validation, aka PAN-SA-2017-0013 and PAN-70541.",CWE-200,0,
 CVE-2017-7216,SDWAN,2017-05-02 15:59:00.177000+00:00,2017,Palo Alto Networks,6.5,MEDIUM,CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N,The Management Web Interface in Palo Alto Networks PAN-OS before 7.1.9 allows remote authenticated users to obtain sensitive information via unspecified request parameters.,CWE-200,0,
+CVE-2017-3733,SDWAN,2017-05-04 19:29:00.430000+00:00,2017,Versa Networks,7.5,HIGH,CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H,During a renegotiation handshake if the Encrypt-Then-Mac extension is negotiated where it was not in the original handshake (or vice-versa) then this can cause OpenSSL 1.1.0 before 1.1.0e to crash (dependent on ciphersuite). Both clients and servers are affected.,CWE-20,0,
+CVE-2017-8850,SDWAN,2017-05-11 18:29:00.250000+00:00,2017,Versa Networks,5.9,MEDIUM,CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N,"An issue was discovered on OnePlus One, X, 2, 3, and 3T devices. Due to a lenient updater-script in the OnePlus OTA images, and the fact that both ROMs use the same OTA verification keys, attackers can install HydrogenOS over OxygenOS and vice versa, even on locked bootloaders, which allows for exploitation of vulnerabilities patched on one image but not on the other, in addition to expansion of the attack surface. This vulnerability can be exploited by Man-in-the-Middle (MiTM) attackers targeting the update process. This is possible because the update transaction does not occur over TLS (CVE-2016-10370). In addition, physical attackers can reboot the phone into recovery, and then use 'adb sideload' to push the OTA (on OnePlus 3/3T 'Secure Start-up' must be off).",CWE-319,0,
 CVE-2017-3127,SDWAN,2017-06-01 14:29:00.187000+00:00,2017,Fortinet,6.1,MEDIUM,CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N,A Cross-Site Scripting vulnerability in Fortinet FortiGate 5.2.0 through 5.2.10 allows attacker to execute unauthorized code or commands via the srcintf parameter during Firewall Policy Creation.,CWE-79,0,
 CVE-2015-6531,SDWAN,2017-06-01 16:29:00.307000+00:00,2017,Palo Alto Networks,7.8,HIGH,CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H,Palo Alto Networks Panorama VM Appliance with PAN-OS before 6.0.1 might allow remote attackers to execute arbitrary Python code via a crafted firmware image file.,CWE-94,0,
 CVE-2017-8390,SDWAN,2017-08-02 19:29:00.930000+00:00,2017,Palo Alto Networks,9.8,CRITICAL,CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H,"The DNS Proxy in Palo Alto Networks PAN-OS before 6.1.18, 7.x before 7.0.16, 7.1.x before 7.1.11, and 8.x before 8.0.3 allows remote attackers to execute arbitrary code via a crafted domain name.",CWE-20,0,
@@ -248,6 +250,12 @@ CVE-2021-1513,SDWAN,2021-05-06 13:15:10.850000+00:00,2021,Cisco,7.5,HIGH,CVSS:3.
 CVE-2021-1514,SDWAN,2021-05-06 13:15:10.887000+00:00,2021,Cisco,7.8,HIGH,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H,"A vulnerability in the CLI of Cisco SD-WAN Software could allow an authenticated, local attacker to inject arbitrary commands to be executed with Administrator privileges on the underlying operating system. This vulnerability is due to insufficient input validation on certain CLI commands. An attacker could exploit this vulnerability by authenticating to the device and submitting crafted input to the CLI. The attacker must be authenticated as a low-privileged user to execute the affected commands. A successful exploit could allow the attacker to execute commands with Administrator privileges.","CWE-20,CWE-78",0,
 CVE-2021-1515,SDWAN,2021-05-06 13:15:10.920000+00:00,2021,Cisco,4.3,MEDIUM,CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N,"A vulnerability in Cisco SD-WAN vManage Software could allow an unauthenticated, adjacent attacker to gain access to sensitive information. This vulnerability is due to improper access controls on API endpoints when Cisco SD-WAN vManage Software is running in multi-tenant mode. An attacker with access to a device that is managed in the multi-tenant environment could exploit this vulnerability by sending a request to an affected API endpoint on the vManage system. A successful exploit could allow the attacker to gain access to sensitive information that may include hashed credentials that could be used in future attacks.",CWE-284,0,
 CVE-2021-1535,SDWAN,2021-05-06 13:15:11.167000+00:00,2021,Cisco,5.3,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N,"A vulnerability in the cluster management interface of Cisco SD-WAN vManage Software could allow an unauthenticated, remote attacker to view sensitive information on an affected system. To be affected by this vulnerability, the Cisco SD-WAN vManage Software must be in cluster mode. This vulnerability is due to the absence of authentication for sensitive information in the cluster management interface. An attacker could exploit this vulnerability by sending a crafted request to the cluster management interface of an affected system. A successful exploit could allow the attacker to allow the attacker to view sensitive information on the affected system.",CWE-497,0,
+CVE-2018-16494,SDWAN,2021-05-26 19:15:08.537000+00:00,2021,Versa Networks,8.8,HIGH,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H,"In VOS and overly permissive ""umask"" may allow for authorized users of the server to gain unauthorized access through insecure file permissions that can result in an arbitrary read, write, or execution of newly created files and directories. Insecure umask setting was present throughout the Versa servers.","CWE-377,CWE-668",0,
+CVE-2018-16496,SDWAN,2021-05-26 19:15:08.610000+00:00,2021,Versa Networks,5.3,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N,"In Versa Director, the un-authentication request found.",CWE-287,0,
+CVE-2018-16497,SDWAN,2021-05-26 19:15:08.643000+00:00,2021,Versa Networks,7.8,HIGH,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H,"In Versa Analytics, the cron jobs are used for scheduling tasks by executing commands at specific dates and times on the server. If the job is run as the user root, there is a potential privilege escalation vulnerability. In this case, the job runs a script as root that is writable by users who are members of the versa group.",CWE-269,0,
+CVE-2018-16498,SDWAN,2021-05-26 19:15:08.680000+00:00,2021,Versa Networks,5.5,MEDIUM,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N,"In Versa Director, the unencrypted backup files stored on the Versa deployment contain credentials stored within configuration files. These credentials are for various application components such as SNMP, and SSL and Trust keystores.",CWE-312,0,
+CVE-2019-25029,SDWAN,2021-05-26 19:15:08.773000+00:00,2021,Versa Networks,9.8,CRITICAL,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H,"In Versa Director, the command injection is an attack in which the goal is execution of arbitrary commands on the host operating system via a vulnerable application. Command injection attacks are possible when an application passes unsafe user supplied data (forms, cookies, HTTP headers etc.) to a system shell. In this attack, the attacker-supplied operating system commands are usually executed with the privileges of the vulnerable application. Command injection attacks are possible largely due to insufficient input validation.",CWE-77,0,
+CVE-2019-25030,SDWAN,2021-05-26 19:15:08.813000+00:00,2021,Versa Networks,5.5,MEDIUM,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N,"In Versa Director, Versa Analytics and VOS, Passwords are not hashed using an adaptive cryptographic hash function or key derivation function prior to storage. Popular hashing algorithms based on the Merkle-Damgardconstruction (such as MD5 and SHA-1) alone are insufficient in thwarting password cracking. Attackers can generate and use precomputed hashes for all possible password character combinations (commonly referred to as ""rainbow tables"") relatively quickly. The use of adaptive hashing algorithms such asscryptorbcryptor Key-Derivation Functions (i.e.PBKDF2) to hash passwords make generation of such rainbow tables computationally infeasible.",CWE-522,0,
 CVE-2021-24012,SDWAN,2021-06-02 13:15:12.673000+00:00,2021,Fortinet,6.5,MEDIUM,CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:L,An improper following of a certificate's chain of trust vulnerability in FortiGate versions 6.4.0 to 6.4.4 may allow an LDAP user to connect to SSLVPN with any certificate that is signed by a trusted Certificate Authority.,CWE-295,0,
 CVE-2021-1528,SDWAN,2021-06-04 17:15:09.020000+00:00,2021,Cisco,7.8,HIGH,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H,"A vulnerability in the CLI of Cisco SD-WAN Software could allow an authenticated, local attacker to gain elevated privileges on an affected system. This vulnerability exists because the affected software does not properly restrict access to privileged processes. An attacker could exploit this vulnerability by invoking a privileged process in the affected system. A successful exploit could allow the attacker to perform actions with the privileges of the root user.",CWE-250,0,
 CVE-2021-3039,SDWAN,2021-06-10 13:15:08.267000+00:00,2021,Palo Alto Networks,3.8,LOW,CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:N,An information exposure through log file vulnerability exists in the Palo Alto Networks Prisma Cloud Compute Console where a secret used to authorize the role of the authenticated user is logged to a debug log file. Authenticated Operator role and Auditor role users with access to the debug log files can use this secret to gain Administrator role access for their active session in Prisma Cloud Compute. Prisma Cloud Compute SaaS versions were automatically upgraded to the fixed release. This issue impacts all Prisma Cloud Compute versions earlier than Prisma Cloud Compute 21.04.412.,CWE-532,0,
@@ -269,10 +277,12 @@ CVE-2021-37725,SDWAN,2021-09-07 13:15:07.940000+00:00,2021,HPE Aruba,8.1,HIGH,CV
 CVE-2021-37729,SDWAN,2021-09-07 13:15:08.030000+00:00,2021,HPE Aruba,6.5,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:H,"A remote path traversal vulnerability was discovered in Aruba SD-WAN Software and Gateways; Aruba Operating System Software version(s): Prior to 8.6.0.0-2.2.0.4; Prior to 8.7.1.3, 8.6.0.9, 8.5.0.12, 8.3.0.16, 6.5.4.19, 6.4.4.25. Aruba has released patches for Aruba SD-WAN Software and Gateways and ArubaOS that address this security vulnerability.",CWE-22,0,
 CVE-2021-37731,SDWAN,2021-09-07 13:15:08.070000+00:00,2021,HPE Aruba,6.2,MEDIUM,CVSS:3.1/AV:P/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H,"A local path traversal vulnerability was discovered in Aruba SD-WAN Software and Gateways; Aruba Operating System Software version(s): Prior to 8.6.0.0-2.2.0.4; Prior to 8.7.1.1, 8.6.0.7, 8.5.0.12, 8.3.0.16. Aruba has released patches for Aruba SD-WAN Software and Gateways and ArubaOS that address this security vulnerability.",CWE-22,0,
 CVE-2021-37733,SDWAN,2021-09-07 13:15:08.110000+00:00,2021,HPE Aruba,4.9,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N,"A remote path traversal vulnerability was discovered in Aruba SD-WAN Software and Gateways; Aruba Operating System Software version(s): Prior to 8.6.0.4-2.2.0.4; Prior to 8.7.1.1, 8.6.0.7, 8.5.0.11, 8.3.0.16. Aruba has released patches for Aruba SD-WAN Software and Gateways and ArubaOS that address this security vulnerability.",CWE-22,0,
+CVE-2021-39285,SDWAN,2021-09-07 13:15:08.153000+00:00,2021,Versa Networks,6.1,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N,A XSS vulnerability exists in Versa Director Release: 16.1R2 Build: S8. An attacker can use the administration web interface URL to create a XSS based attack.,CWE-79,0,
 CVE-2021-3052,SDWAN,2021-09-08 17:15:12.003000+00:00,2021,Palo Alto Networks,8.0,HIGH,CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H,A reflected cross-site scripting (XSS) vulnerability in the Palo Alto Network PAN-OS web interface enables an authenticated network-based attacker to mislead another authenticated PAN-OS administrator to click on a specially crafted link that performs arbitrary actions in the PAN-OS web interface as the targeted authenticated administrator. This issue impacts: PAN-OS 8.1 versions earlier than 8.1.20; PAN-OS 9.0 versions earlier than 9.0.14; PAN-OS 9.1 versions earlier than 9.1.10; PAN-OS 10.0 versions earlier than 10.0.2. This issue does not affect Prisma Access.,CWE-79,0,
 CVE-2021-3053,SDWAN,2021-09-08 17:15:12.093000+00:00,2021,Palo Alto Networks,7.5,HIGH,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H,An improper handling of exceptional conditions vulnerability exists in the Palo Alto Networks PAN-OS dataplane that enables an unauthenticated network-based attacker to send specifically crafted traffic through the firewall that causes the service to crash. Repeated attempts to send this request result in denial of service to all PAN-OS services by restarting the device and putting it into maintenance mode. This issue impacts: PAN-OS 8.1 versions earlier than PAN-OS 8.1.20; PAN-OS 9.0 versions earlier than PAN-OS 9.0.14; PAN-OS 9.1 versions earlier than PAN-OS 9.1.9; PAN-OS 10.0 versions earlier than PAN-OS 10.0.5. This issue does not affect Prisma Access.,CWE-755,0,
 CVE-2021-3054,SDWAN,2021-09-08 17:15:12.250000+00:00,2021,Palo Alto Networks,7.2,HIGH,CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H,A time-of-check to time-of-use (TOCTOU) race condition vulnerability in the Palo Alto Networks PAN-OS web interface enables an authenticated administrator with permission to upload plugins to execute arbitrary code with root user privileges. This issue impacts: PAN-OS 8.1 versions earlier than PAN-OS 8.1.20; PAN-OS 9.0 versions earlier than PAN-OS 9.0.14; PAN-OS 9.1 versions earlier than PAN-OS 9.1.11; PAN-OS 10.0 versions earlier than PAN-OS 10.0.7; PAN-OS 10.1 versions earlier than PAN-OS 10.1.2. This issue does not affect Prisma Access.,CWE-367,0,
 CVE-2021-3055,SDWAN,2021-09-08 17:15:12.337000+00:00,2021,Palo Alto Networks,6.5,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:H,An improper restriction of XML external entity (XXE) reference vulnerability in the Palo Alto Networks PAN-OS web interface enables an authenticated administrator to read any arbitrary file from the file system and send a specifically crafted request to the firewall that causes the service to crash. Repeated attempts to send this request result in denial of service to all PAN-OS services by restarting the device and putting it into maintenance mode. This issue impacts: PAN-OS 8.1 versions earlier than PAN-OS 8.1.20; PAN-OS 9.0 versions earlier than PAN-OS 9.0.14; PAN-OS 9.1 versions earlier than PAN-OS 9.1.10; PAN-OS 10.0 versions earlier than PAN-OS 10.0.6. This issue does not affect Prisma Access.,CWE-611,0,
+CVE-2021-37193,SDWAN,2021-09-14 11:15:26.170000+00:00,2021,Versa Networks,4.3,MEDIUM,CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N,A vulnerability has been identified in SINEMA Remote Connect Server (All versions < V3.0 SP2). An unauthenticated attacker in the same network of the affected system could manipulate certain parameters and set a valid user of the affected software as invalid (or vice-versa).,CWE-471,0,
 CVE-2021-1546,SDWAN,2021-09-23 03:15:11.183000+00:00,2021,Cisco,5.5,MEDIUM,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N,"A vulnerability in the CLI of Cisco SD-WAN Software could allow an authenticated, local attacker to access sensitive information. This vulnerability is due to improper protections on file access through the CLI. An attacker could exploit this vulnerability by running a CLI command that targets an arbitrary file on the local system. A successful exploit could allow the attacker to return portions of an arbitrary file, possibly resulting in the disclosure of sensitive information.",CWE-209,0,
 CVE-2021-1589,SDWAN,2021-09-23 03:15:11.717000+00:00,2021,Cisco,6.5,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N,"A vulnerability in the disaster recovery feature of Cisco SD-WAN vManage Software could allow an authenticated, remote attacker to gain unauthorized access to user credentials. This vulnerability exists because access to API endpoints is not properly restricted. An attacker could exploit this vulnerability by sending a request to an API endpoint. A successful exploit could allow the attacker to gain unauthorized access to administrative credentials that could be used in further attacks.","CWE-256,CWE-522",0,
 CVE-2021-1612,SDWAN,2021-09-23 03:15:12.270000+00:00,2021,Cisco,5.5,MEDIUM,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N,"A vulnerability in the Cisco IOS XE SD-WAN Software CLI could allow an authenticated, local attacker to overwrite arbitrary files on the local system. This vulnerability is due to improper access controls on files within the local file system. An attacker could exploit this vulnerability by placing a symbolic link in a specific location on the local file system. A successful exploit could allow the attacker to overwrite arbitrary files on an affected device.","CWE-59,CWE-61",0,
@@ -320,6 +330,7 @@ CVE-2022-29055,SDWAN,2022-10-18 15:15:09.620000+00:00,2022,Fortinet,7.5,HIGH,CVS
 CVE-2022-37913,SDWAN,2022-10-28 02:15:17.450000+00:00,2022,HPE Aruba,9.8,CRITICAL,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H,"Vulnerabilities in the web-based management interface of Aruba EdgeConnect Enterprise Orchestrator could allow an unauthenticated remote attacker to bypass authentication. Successful exploitation of these vulnerabilities could allow an attacker to gain administrative privileges leading to a complete compromise of the Aruba EdgeConnect Enterprise Orchestrator with versions 9.1.2.40051 and below, 9.0.7.40108 and below, 8.10.23.40009 and below, and any older branches of Orchestrator not specifically mentioned.",CWE-287,0,
 CVE-2022-37914,SDWAN,2022-10-28 02:15:17.517000+00:00,2022,HPE Aruba,9.8,CRITICAL,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H,"Vulnerabilities in the web-based management interface of Aruba EdgeConnect Enterprise Orchestrator could allow an unauthenticated remote attacker to bypass authentication. Successful exploitation of these vulnerabilities could allow an attacker to gain administrative privileges leading to a complete compromise of the Aruba EdgeConnect Enterprise Orchestrator with versions 9.1.2.40051 and below, 9.0.7.40108 and below, 8.10.23.40009 and below, and any older branches of Orchestrator not specifically mentioned.",CWE-287,0,
 CVE-2022-37915,SDWAN,2022-10-28 02:15:17.600000+00:00,2022,HPE Aruba,9.8,CRITICAL,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H,"A vulnerability in the web-based management interface of Aruba EdgeConnect Enterprise Orchestrator could allow an unauthenticated remote attacker to run arbitrary commands on the underlying host. Successful exploitation of this vulnerability could allow an attacker to execute arbitrary commands on the underlying operating system leading to a complete system compromise of Aruba EdgeConnect Enterprise Orchestration with versions 9.1.x branch only, Any 9.1.x Orchestrator instantiated as a new machine with a release prior to 9.1.3.40197, Orchestrators upgraded to 9.1.x were not affected.",CWE-78,0,
+CVE-2022-2741,SDWAN,2022-10-31 18:15:13.870000+00:00,2022,Versa Networks,8.2,HIGH,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H,"The denial-of-service can be triggered by transmitting a carefully crafted CAN frame on the same CAN network as the vulnerable node. The frame must have a CAN ID matching an installed filter in the vulnerable node (this can easily be guessed based on CAN traffic analyses). The frame must contain the opposite RTR bit as what the filter installed in the vulnerable node contains (if the filter matches RTR frames, the frame must be a data frame or vice versa).",CWE-400,0,
 CVE-2022-35842,SDWAN,2022-11-02 12:15:53.377000+00:00,2022,Fortinet,3.7,LOW,CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N,"An exposure of sensitive information to an unauthorized actor vulnerabiltiy [CWE-200] in FortiOS SSL-VPN versions 7.2.0, versions 7.0.0 through 7.0.6 and versions 6.4.0 through 6.4.9 may allow a remote unauthenticated attacker to gain information about LDAP and SAML settings configured in FortiOS.",CWE-200,0,
 CVE-2022-37919,SDWAN,2022-12-12 13:15:13.503000+00:00,2022,HPE Aruba,7.5,HIGH,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H,"A vulnerability exists in the API of Aruba EdgeConnect Enterprise. An unauthenticated attacker can exploit this condition via the web-based management interface to create a denial-of-service condition which prevents the appliance from properly responding to API requests in Aruba EdgeConnect Enterprise Software version(s): ECOS 9.2.1.0 and below; ECOS 9.1.3.0 and below; ECOS 9.0.7.0 and below; ECOS 8.3.7.1 and below;
 
@@ -513,6 +524,7 @@ CVE-2023-20262,SDWAN,2023-09-27 18:15:11.757000+00:00,2023,Cisco,5.3,MEDIUM,CVSS
 CVE-2023-41675,SDWAN,2023-10-10 17:15:12.620000+00:00,2023,Fortinet,5.3,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L,A use after free vulnerability [CWE-416] in FortiOS version 7.2.0 through 7.2.4 and version 7.0.0 through 7.0.10 and FortiProxy version 7.2.0 through 7.2.2 and version 7.0.0 through 7.0.8 may allow an unauthenticated remote attacker to crash the WAD process via multiple crafted packets reaching proxy policies or firewall policies with proxy mode alongside SSL deep packet inspection.,CWE-416,0,
 CVE-2023-20261,SDWAN,2023-10-18 17:15:08.467000+00:00,2023,Cisco,6.5,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N,"A vulnerability in the web UI of Cisco Catalyst SD-WAN Manager could allow an authenticated, remote attacker to retrieve arbitrary files from an affected system.
  This vulnerability is due to improper validation of parameters that are sent to the web UI. An attacker could exploit this vulnerability by logging in to Cisco Catalyst SD-WAN Manager and issuing crafted requests using the web UI. A successful exploit could allow the attacker to obtain arbitrary files from the underlying Linux file system of an affected system. To exploit this vulnerability, the attacker must be an authenticated user.",CWE-284,0,
+CVE-2023-46254,SDWAN,2023-11-06 19:15:09.230000+00:00,2023,Versa Networks,4.3,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N,"capsule-proxy is a reverse proxy for Capsule kubernetes multi-tenancy framework. A bug in the RoleBinding reflector used by `capsule-proxy` gives ServiceAccount tenant owners the right to list Namespaces of other tenants backed by the same owner kind and name. For example consider two tenants `solar` and `wind`. Tenant `solar`, owned by a ServiceAccount named `tenant-owner` in the Namespace `solar`. Tenant `wind`, owned by a ServiceAccount named `tenant-owner` in the Namespace `wind`. The Tenant owner `solar` would be able to list the namespaces of the Tenant `wind` and vice-versa, although this is not correct. The bug introduces an exfiltration vulnerability since allows the listing of Namespace resources of other Tenants, although just in some specific conditions: 1. `capsule-proxy` runs with the `--disable-caching=false` (default value: `false`) and 2. Tenant owners are ServiceAccount, with the same resource name, but in different Namespaces. This vulnerability doesn't allow any privilege escalation on the outer tenant Namespace-scoped resources, since the Kubernetes RBAC is enforcing this. This issue has been addressed in version 0.4.5. Users are advised to upgrade. There are no known workarounds for this vulnerability.",CWE-200,0,
 CVE-2023-47536,SDWAN,2023-12-13 08:15:50.920000+00:00,2023,Fortinet,3.1,LOW,CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N,"An improper access control vulnerability [CWE-284] in FortiOS version 7.2.0, version 7.0.13 and below, version 6.4.14 and below and FortiProxy version 7.2.3 and below, version 7.0.9 and below, version 2.0.12 and below may allow a remote unauthenticated attacker to bypass the firewall deny geolocalisation policy via timing the bypass with a GeoIP database update.",CWE-284,0,
 CVE-2023-6789,SDWAN,2023-12-13 19:15:08.777000+00:00,2023,Palo Alto Networks,4.3,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:L/I:L/A:L,"A cross-site scripting (XSS) vulnerability in Palo Alto Networks PAN-OS software enables a malicious authenticated read-write administrator to store a JavaScript payload using the web interface. Then, when viewed by a properly authenticated administrator, the JavaScript payload executes and disguises all associated actions as performed by that unsuspecting authenticated administrator.",CWE-79,0,
 CVE-2023-6790,SDWAN,2023-12-13 19:15:09.030000+00:00,2023,Palo Alto Networks,8.8,HIGH,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H,A DOM-Based cross-site scripting (XSS) vulnerability in Palo Alto Networks PAN-OS software enables a remote attacker to execute a JavaScript payload in the context of an administrator’s browser when they view a specifically crafted link to the PAN-OS web interface.,CWE-79,0,
@@ -524,6 +536,18 @@ CVE-2023-6795,SDWAN,2023-12-13 19:15:10.537000+00:00,2023,Palo Alto Networks,5.5
 CVE-2024-0007,SDWAN,2024-02-14 18:15:47.110000+00:00,2024,Palo Alto Networks,6.8,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H,A cross-site scripting (XSS) vulnerability in Palo Alto Networks PAN-OS software enables a malicious authenticated read-write administrator to store a JavaScript payload using the web interface on Panorama appliances. This enables the impersonation of another authenticated administrator.,CWE-79,0,
 CVE-2024-0008,SDWAN,2024-02-14 18:15:47.310000+00:00,2024,Palo Alto Networks,6.6,MEDIUM,CVSS:3.1/AV:P/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H,"Web sessions in the management interface in Palo Alto Networks PAN-OS software do not expire in certain situations, making it susceptible to unauthorized access.",CWE-613,0,
 CVE-2024-0011,SDWAN,2024-02-14 18:15:47.897000+00:00,2024,Palo Alto Networks,4.3,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N,"A reflected cross-site scripting (XSS) vulnerability in the Captive Portal feature of Palo Alto Networks PAN-OS software enables execution of malicious JavaScript (in the context of an authenticated Captive Portal user’s browser) if a user clicks on a malicious link, allowing phishing attacks that could lead to credential theft.",CWE-79,0,
+CVE-2021-46974,SDWAN,2024-02-27 19:04:07.500000+00:00,2024,Versa Networks,5.5,MEDIUM,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H,"In the Linux kernel, the following vulnerability has been resolved:
+
+bpf: Fix masking negation logic upon negative dst register
+
+The negation logic for the case where the off_reg is sitting in the
+dst register is not correct given then we cannot just invert the add
+to a sub or vice versa. As a fix, perform the final bitwise and-op
+unconditionally into AX from the off_reg, then move the pointer from
+the src to dst and finally use AX as the source for the original
+pointer arithmetic operation such that the inversion yields a correct
+result. The single non-AX mov in between is possible given constant
+blinding is retaining it as it's not an immediate based operation.",,0,
 CVE-2024-23112,SDWAN,2024-03-12 15:15:49.090000+00:00,2024,Fortinet,8.0,HIGH,CVSS:3.1/AV:A/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H,"An authorization bypass through user-controlled key vulnerability [CWE-639] in FortiOS version 7.4.0 through 7.4.1, 7.2.0 through 7.2.6, 7.0.1 through 7.0.13, 6.4.7 through 6.4.14, and FortiProxy version 7.4.0 through 7.4.2, 7.2.0 through 7.2.8, 7.0.0 through 7.0.14 SSL-VPN may allow an authenticated attacker to gain access to another user’s bookmark via URL manipulation.",CWE-639,0,
 CVE-2024-2433,SDWAN,2024-03-13 18:15:08.893000+00:00,2024,Palo Alto Networks,4.3,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L,"An improper authorization vulnerability in Palo Alto Networks Panorama software enables an authenticated read-only administrator to upload files using the web interface and completely fill one of the disk partitions with those uploaded files, which prevents the ability to log into the web interface or to download PAN-OS, WildFire, and content images. 
 
@@ -576,8 +600,12 @@ CVE-2024-41134,SDWAN,2024-07-24 20:15:04.427000+00:00,2024,HPE Aruba,7.2,HIGH,CV
 CVE-2024-41135,SDWAN,2024-07-24 20:15:04.600000+00:00,2024,HPE Aruba,7.2,HIGH,CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H,A vulnerability exists in the HPE Aruba Networking EdgeConnect SD-WAN gateway's Command Line Interface that allows remote authenticated users to run arbitrary commands on the underlying host. Successful exploitation of this vulnerability will result in the ability to execute arbitrary commands as root on the underlying operating system leading to complete system compromise,CWE-77,0,
 CVE-2024-41136,SDWAN,2024-07-24 21:15:11.857000+00:00,2024,HPE Aruba,6.8,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H,An authenticated command injection vulnerability exists in the HPE Aruba Networking EdgeConnect SD-WAN gateways Command Line Interface. Successful exploitation of this vulnerability results in the ability to execute arbitrary commands as a privileged user on the underlying operating system.,"CWE-77,CWE-78",0,
 CVE-2024-5916,SDWAN,2024-08-14 17:15:18.543000+00:00,2024,Palo Alto Networks,4.4,MEDIUM,CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N,"An information exposure vulnerability in Palo Alto Networks PAN-OS software enables a local system administrator to unintentionally disclose secrets, passwords, and tokens of external systems. A read-only administrator who has access to the config log, can read secrets, passwords, and tokens to external systems.","CWE-312,CWE-313",0,
+CVE-2024-39717,SDWAN,2024-08-22 19:15:09.173000+00:00,2024,Versa Networks,7.2,HIGH,CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H,The Versa Director GUI provides an option to customize the look and feel of the user interface. This option is only available for a user logged with Provider-Data-Center-Admin or Provider-Data-Center-System-Admin. (Tenant level users do not have this privilege). The “Change Favicon” (Favorite Icon) option can be mis-used to upload a malicious file ending with .png extension to masquerade as image file. This is possible only after a user with Provider-Data-Center-Admin or Provider-Data-Center-System-Admin has successfully authenticated and logged in.,CWE-434,0,
 CVE-2024-8686,SDWAN,2024-09-11 17:15:14.033000+00:00,2024,Palo Alto Networks,7.2,HIGH,CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H,A command injection vulnerability in Palo Alto Networks PAN-OS software enables an authenticated administrator to bypass system restrictions and run arbitrary commands as root on the firewall.,CWE-78,0,
 CVE-2024-8688,SDWAN,2024-09-11 17:15:14.273000+00:00,2024,Palo Alto Networks,4.4,MEDIUM,CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N,An improper neutralization of matching symbols vulnerability in the Palo Alto Networks PAN-OS command line interface (CLI) enables authenticated administrators (including read-only administrators) with access to the CLI to to read arbitrary files on the firewall.,CWE-155,0,
+CVE-2024-45229,SDWAN,2024-09-20 19:15:16.080000+00:00,2024,Versa Networks,6.6,MEDIUM,CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H,"The Versa Director offers REST APIs for orchestration and management. By design, certain APIs, such as the login screen, banner display, and device registration, do not require authentication. However, it was discovered that for Directors directly connected to the Internet, one of these APIs can be exploited by injecting invalid arguments into a GET request, potentially exposing the authentication tokens of other currently logged-in users. These tokens can then be used to invoke additional APIs on port 9183. This exploit does not disclose any username or password information. 
+
+Currently, there are no workarounds in Versa Director. However, if there is Web Application Firewall (WAF) or API Gateway fronting the Versa Director, it can be used to block access to the URLs of vulnerable API.  /vnms/devicereg/device/* (on ports 9182 & 9183) and /versa/vnms/devicereg/device/* (on port 443). Versa recommends that Directors be upgraded to one of the remediated software versions. This vulnerability is not exploitable on Versa Directors not exposed to the Internet.We have validated that no Versa-hosted head ends have been affected by this vulnerability. Please contact Versa Technical Support or Versa account team for any further assistance.",CWE-306,0,
 CVE-2024-20475,SDWAN,2024-09-25 17:15:17.587000+00:00,2024,Cisco,6.4,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N,"A vulnerability in the web-based management interface of Cisco Catalyst SD-WAN Manager, formerly Cisco SD-WAN vManage, could allow an authenticated, remote attacker to conduct a cross-site scripting (XSS) attack against a user of the interface.
 
 This vulnerability exists because the web-based management interface does not properly validate user-supplied input. An attacker could exploit this vulnerability by inserting malicious data into a specific data field in an affected interface. A successful exploit could allow the attacker to execute arbitrary script code in the context of the affected interface.",CWE-79,0,
@@ -673,6 +701,7 @@ Please contact Versa Technical Support or Versa account team for any further ass
 
 Software Download Links:
 22.1.4: https://support.versa-networks.com/support/solutions/articles/23000026708-release-22-1-4",CWE-798,0,
+CVE-2024-53846,SDWAN,2024-12-05 17:15:14.477000+00:00,2024,Versa Networks,5.5,MEDIUM,CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:L/I:L/A:L,"OTP is a set of Erlang libraries, which consists of the Erlang runtime system, a number of ready-to-use components mainly written in Erlang, and a set of design principles for Erlang programs. A regression was introduced into the ssl application of OTP starting at OTP-25.3.2.8, OTP-26.2, and OTP-27.0, resulting in a server or client verifying the peer when incorrect extended key usage is presented (i.e., a server will verify a client if they have server auth ext key usage and vice versa).",CWE-295,0,
 CVE-2020-12819,SDWAN,2024-12-19 08:15:11.770000+00:00,2024,Fortinet,5.4,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L,"A heap-based buffer overflow vulnerability in the processing of Link Control Protocol messages in FortiGate versions 5.6.12, 6.0.10, 6.2.4 and 6.4.1 and earlier may allow a remote attacker with valid SSL VPN credentials to crash the SSL VPN daemon by sending a large LCP packet, when tunnel mode is enabled. Arbitrary code execution may be theoretically possible, albeit practically very difficult to achieve in this context","CWE-122,CWE-787",0,
 CVE-2020-12820,SDWAN,2024-12-19 11:15:05.700000+00:00,2024,Fortinet,5.4,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L,"Under non-default configuration, a stack-based buffer overflow in FortiOS version 6.0.10 and below, version 5.6.12 and below may allow a remote attacker authenticated to the SSL VPN to crash the FortiClient NAC daemon (fcnacd) and potentially execute arbitrary code via requesting a large FortiClient file name. We are not aware of proof of concept code successfully achieving the latter.","CWE-121,CWE-787",0,
 CVE-2024-3393,SDWAN,2024-12-27 10:15:17.270000+00:00,2024,Palo Alto Networks,7.5,HIGH,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H,A Denial of Service vulnerability in the DNS Security feature of Palo Alto Networks PAN-OS software allows an unauthenticated attacker to send a malicious packet through the data plane of the firewall that reboots the firewall. Repeated attempts to trigger this condition will cause the firewall to enter maintenance mode.,CWE-754,0,
@@ -715,6 +744,8 @@ CVE-2019-15706,SDWAN,2025-03-17 14:15:15.107000+00:00,2025,Fortinet,4.1,MEDIUM,C
 CVE-2019-6697,SDWAN,2025-03-17 14:15:16.567000+00:00,2025,Fortinet,5.3,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N,"An Improper Neutralization of Input vulnerability affecting FortiGate version 6.2.0 through 6.2.1, 6.0.0 through 6.0.6 in the hostname parameter of a DHCP packet under DHCP monitor page may allow an unauthenticated attacker in the same network as the FortiGate to perform a Stored Cross Site Scripting attack (XSS) by sending a crafted DHCP packet.",CWE-79,0,
 CVE-2020-29010,SDWAN,2025-03-17 14:15:16.730000+00:00,2025,Fortinet,5.0,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N,"An exposure of sensitive information to an unauthorized actor vulnerability in FortiOS version 6.2.4 and below, version 6.0.10 and belowmay allow remote authenticated actors to read the SSL VPN events log entries of users in other VDOMs by  executing ""get vpn ssl monitor"" from the CLI. The sensitive data includes usernames, user groups, and IP address.",CWE-200,0,
 CVE-2023-37930,SDWAN,2025-04-08 14:15:30.653000+00:00,2025,Fortinet,7.5,HIGH,CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H,Multiple issues including the use of uninitialized ressources [CWE-908] and excessive iteration [CWE-834] vulnerabilities vulnerability in Fortinet  allows a VPN user to corrupt memory potentially leading to code or commands execution via specifically crafted requests.,CWE-908,0,
+CVE-2025-27350,SDWAN,2025-04-10 11:15:45.660000+00:00,2025,Versa Networks,7.1,HIGH,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L,Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Hugh Mungus Vice Versa vice-versa allows Reflected XSS.This issue affects Vice Versa: from n/a through <= 2.2.3.,CWE-79,0,
+CVE-2025-32382,SDWAN,2025-04-10 15:16:05.560000+00:00,2025,Versa Networks,,UNKNOWN,,"Metabase is an open source Business Intelligence and Embedded Analytics tool. When admins change Snowflake connection details in Metabase (either updating a password or changing password to private key or vice versa), Metabase would not always purge older Snowflake connection details from the application database. In order to remove older and stale connection details, Metabase would try one connection method at a time and purge all the other connection methods from the application database. When Metabase found a connection that worked, it would log (log/infof ""Successfully connected, migrating to: %s"" (pr-str test-details)) which would then print the username and password to the logger. This is fixed in 52.17.1, 53.9.5 and 54.1.5 in both the OSS and enterprise editions. Versions 51 and lower are not impacted.",CWE-532,0,
 CVE-2025-0122,SDWAN,2025-04-11 02:15:18.527000+00:00,2025,Palo Alto Networks,,UNKNOWN,,A denial-of-service (DoS) vulnerability in Palo Alto Networks Prisma® SD-WAN ION devices enables an unauthenticated attacker in a network adjacent to a Prisma SD-WAN ION device to disrupt the packet processing capabilities of the device by sending a burst of crafted packets to that device.,CWE-770,0,
 CVE-2025-0124,SDWAN,2025-04-11 02:15:18.663000+00:00,2025,Palo Alto Networks,3.8,LOW,CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:L,"An authenticated file deletion vulnerability in the Palo Alto Networks PAN-OS® software enables an authenticated attacker with network access to the management web interface to delete certain files as the “nobody” user; this includes limited logs and configuration files but does not include system files.
 
@@ -781,6 +812,10 @@ The attacker must have network access to the management web interface to exploit
 CVE-2025-0138,SDWAN,2025-05-14 19:15:52.370000+00:00,2025,Palo Alto Networks,,UNKNOWN,,"Web sessions in the web interface of Palo Alto Networks Prisma® Cloud Compute Edition do not expire when users are deleted, which makes Prisma Cloud Compute Edition susceptible to unauthorized access.
 
 Compute in Prisma Cloud Enterprise Edition is not affected by this issue.",CWE-613,0,
+CVE-2025-4105,SDWAN,2025-05-21 12:16:22.473000+00:00,2025,Versa Networks,5.4,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N,"The Splitit plugin for WordPress is vulnerable to unauthorized modification of data due to missing capability checks on several functions in the 'splitIt-flexfields-payment-gateway.php' file in all versions up to, and including, 4.2.8. This makes it possible for authenticated attackers, with Subscriber-level access and above, to change plugin settings, including changing the environment from sandbox to production and vice versa.",CWE-862,0,
+CVE-2025-34026,SDWAN,2025-05-21 22:15:50.510000+00:00,2025,Versa Networks,7.5,HIGH,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N,"The Versa Concerto SD-WAN orchestration platform is vulnerable to an authentication bypass in the Traefik reverse proxy configuration, allowing at attacker to access administrative endpoints. The internal Actuator endpoint can be leveraged for access to heap dumps and trace logs.This issue is known to affect Concerto from 12.1.2 through 12.2.0. Additional versions may be vulnerable.",CWE-288,0,
+CVE-2025-34027,SDWAN,2025-05-21 22:15:50.680000+00:00,2025,Versa Networks,,UNKNOWN,,"The Versa Concerto SD-WAN orchestration platform is vulnerable to an authentication bypass in the Traefik reverse proxy configuration, allowing at attacker to access administrative endpoints. The Spack upload endpoint can be leveraged for a Time-of-Check to Time-of-Use (TOCTOU) write in combination with a race condition to achieve remote code execution via path loading manipulation, allowing an unauthenticated actor to achieve remote code execution (RCE).This issue is known to affect Concerto from 12.1.2 through 12.2.0. Additional versions may be vulnerable.",CWE-367,0,
+CVE-2025-34025,SDWAN,2025-05-21 23:15:54.827000+00:00,2025,Versa Networks,,UNKNOWN,,The Versa Concerto SD-WAN orchestration platform is vulnerable to an privileges escalation and container escape vulnerability caused by unsafe default mounting of host binary paths that allow the container to modify host paths. The escape can be used to trigger remote code execution or direct host access depending on the host operating system configuration.This issue is known to affect Concerto from 12.1.2 through 12.2.0. Additional versions may be vulnerable.,CWE-732,0,
 CVE-2024-50562,SDWAN,2025-06-10 17:19:25.360000+00:00,2025,Fortinet,4.8,MEDIUM,CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N,"An Insufficient Session Expiration vulnerability [CWE-613] in FortiOS SSL-VPN version 7.6.0, version 7.4.6 and below, version 7.2.10 and below, 7.0 all versions, 6.4 all versions may allow an attacker in possession of a cookie used to log in the SSL-VPN portal to log in again, although the session has expired or was logged out.",CWE-613,0,
 CVE-2024-54019,SDWAN,2025-06-10 17:19:40.090000+00:00,2025,Fortinet,4.8,MEDIUM,CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N,"A improper validation of certificate with host mismatch in Fortinet FortiClientWindows version 7.4.0, versions 7.2.0 through 7.2.6, and 7.0 all versions allow an unauthorized attacker to redirect VPN connections via DNS spoofing or another form of redirection.",CWE-297,0,
 CVE-2025-25250,SDWAN,2025-06-10 17:21:16.550000+00:00,2025,Fortinet,4.3,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N,"An Exposure of Sensitive Information to an Unauthorized Actor vulnerability [CWE-200] vulnerability in Fortinet FortiOS 7.6.0, FortiOS 7.4.0 through 7.4.7, FortiOS 7.2 all versions, FortiOS 7.0 all versions, FortiOS 6.4 all versions, FortiSASE 25.1.c may allow an authenticated user to access full SSL-VPN settings via crafted URL.",CWE-200,0,
@@ -886,6 +921,15 @@ CVE-2025-37128,SDWAN,2025-09-16 23:15:32.640000+00:00,2025,HPE Aruba,6.8,MEDIUM,
 CVE-2025-37129,SDWAN,2025-09-16 23:15:32.773000+00:00,2025,HPE Aruba,6.7,MEDIUM,CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H,A vulnerable feature in the command line interface of EdgeConnect SD-WAN could allow an authenticated attacker to exploit built-in script execution capabilities. Successful exploitation could allow an attacker to execute arbitrary commands on the underlying operating system if the feature is enabled without proper security measures.,CWE-78,0,
 CVE-2025-37130,SDWAN,2025-09-16 23:15:32.897000+00:00,2025,HPE Aruba,6.5,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N,A vulnerability in the command-line interface of EdgeConnect SD-WAN could allow an authenticated attacker to read arbitrary files within the system. Successful exploitation could allow an attacker to read sensitive data from the underlying file system.,CWE-552,0,
 CVE-2025-37131,SDWAN,2025-09-16 23:15:33.023000+00:00,2025,HPE Aruba,4.9,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N,"A vulnerability in EdgeConnect SD-WAN ECOS could allow an authenticated remote threat actor with admin privileges to access sensitive unauthorized system files. Under certain conditions, this could lead to exposure and exfiltration of sensitive information.",CWE-284,0,
+CVE-2023-53442,SDWAN,2025-09-18 16:15:48.477000+00:00,2025,Versa Networks,5.5,MEDIUM,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H,"In the Linux kernel, the following vulnerability has been resolved:
+
+ice: Block switchdev mode when ADQ is active and vice versa
+
+ADQ and switchdev are not supported simultaneously. Enabling both at the
+same time can result in nullptr dereference.
+
+To prevent this, check if ADQ is active when changing devlink mode to
+switchdev mode, and check if switchdev is active when enabling ADQ.",CWE-476,0,
 CVE-2025-20339,SDWAN,2025-09-24 17:15:40.523000+00:00,2025,Cisco,5.8,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:L/A:N,"A vulnerability in the access control list (ACL) processing of IPv4 packets of Cisco SD-WAN vEdge Software could allow an unauthenticated, remote attacker to bypass a configured ACL.
 
 This vulnerability is due to the improper enforcement of the implicit deny all at the end of a configured ACL. An attacker could exploit this vulnerability by attempting to send unauthorized traffic to an interface on an affected device. A successful exploit could allow the attacker to bypass an ACL on the affected device.",CWE-284,0,
@@ -900,6 +944,75 @@ The security risk posed by this issue is significantly minimized when CLI access
 
 Cloud NGFW and Prisma® Access are not affected by this vulnerability.",CWE-83,0,
 CVE-2025-25252,SDWAN,2025-10-14 16:15:36.683000+00:00,2025,Fortinet,4.8,MEDIUM,CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N,"An Insufficient Session Expiration vulnerability [CWE-613] in FortiOS SSL VPN 7.6.0 through 7.6.2, 7.4.0 through 7.4.6, 7.2.0 through 7.2.10, 7.0.0 through 7.0.16, 6.4 all versions may allow a remote attacker (e.g. a former admin whose account was removed and whose session was terminated) in possession of the SAML record of a user session to access or re-open that session via re-use of SAML record.",CWE-613,0,
+CVE-2025-39980,SDWAN,2025-10-15 08:15:35.887000+00:00,2025,Versa Networks,,UNKNOWN,,"In the Linux kernel, the following vulnerability has been resolved:
+
+nexthop: Forbid FDB status change while nexthop is in a group
+
+The kernel forbids the creation of non-FDB nexthop groups with FDB
+nexthops:
+
+ # ip nexthop add id 1 via 192.0.2.1 fdb
+ # ip nexthop add id 2 group 1
+ Error: Non FDB nexthop group cannot have fdb nexthops.
+
+And vice versa:
+
+ # ip nexthop add id 3 via 192.0.2.2 dev dummy1
+ # ip nexthop add id 4 group 3 fdb
+ Error: FDB nexthop group can only have fdb nexthops.
+
+However, as long as no routes are pointing to a non-FDB nexthop group,
+the kernel allows changing the type of a nexthop from FDB to non-FDB and
+vice versa:
+
+ # ip nexthop add id 5 via 192.0.2.2 dev dummy1
+ # ip nexthop add id 6 group 5
+ # ip nexthop replace id 5 via 192.0.2.2 fdb
+ # echo $?
+ 0
+
+This configuration is invalid and can result in a NPD [1] since FDB
+nexthops are not associated with a nexthop device:
+
+ # ip route add 198.51.100.1/32 nhid 6
+ # ping 198.51.100.1
+
+Fix by preventing nexthop FDB status change while the nexthop is in a
+group:
+
+ # ip nexthop add id 7 via 192.0.2.2 dev dummy1
+ # ip nexthop add id 8 group 7
+ # ip nexthop replace id 7 via 192.0.2.2 fdb
+ Error: Cannot change nexthop FDB status while in a group.
+
+[1]
+BUG: kernel NULL pointer dereference, address: 00000000000003c0
+[...]
+Oops: Oops: 0000 [#1] SMP
+CPU: 6 UID: 0 PID: 367 Comm: ping Not tainted 6.17.0-rc6-virtme-gb65678cacc03 #1 PREEMPT(voluntary)
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.17.0-4.fc41 04/01/2014
+RIP: 0010:fib_lookup_good_nhc+0x1e/0x80
+[...]
+Call Trace:
+ <TASK>
+ fib_table_lookup+0x541/0x650
+ ip_route_output_key_hash_rcu+0x2ea/0x970
+ ip_route_output_key_hash+0x55/0x80
+ __ip4_datagram_connect+0x250/0x330
+ udp_connect+0x2b/0x60
+ __sys_connect+0x9c/0xd0
+ __x64_sys_connect+0x18/0x20
+ do_syscall_64+0xa4/0x2a0
+ entry_SYSCALL_64_after_hwframe+0x4b/0x53",,0,
+CVE-2023-53695,SDWAN,2025-10-22 14:15:44+00:00,2025,Versa Networks,,UNKNOWN,,"In the Linux kernel, the following vulnerability has been resolved:
+
+udf: Detect system inodes linked into directory hierarchy
+
+When UDF filesystem is corrupted, hidden system inodes can be linked
+into directory hierarchy which is an avenue for further serious
+corruption of the filesystem and kernel confusion as noticed by syzbot
+fuzzed images. Refuse to access system inodes linked into directory
+hierarchy and vice versa.",,0,
 CVE-2025-4619,SDWAN,2025-11-13 21:15:49.833000+00:00,2025,Palo Alto Networks,,UNKNOWN,,"A denial-of-service (DoS) vulnerability in Palo Alto Networks PAN-OS software enables an unauthenticated attacker to reboot a firewall by sending a specially crafted packet through the dataplane. Repeated attempts to initiate a reboot causes the firewall to enter maintenance mode.
 
 This issue is applicable to the PAN-OS software versions listed below on PA-Series firewalls, VM-Series firewalls, and Prisma® Access software. This issue does not affect Cloud NGFW.
@@ -916,6 +1029,7 @@ CVE-2025-46373,SDWAN,2025-11-18 17:16:01.753000+00:00,2025,Fortinet,7.8,HIGH,CVS
 CVE-2025-47761,SDWAN,2025-11-18 17:16:02.413000+00:00,2025,Fortinet,7.8,HIGH,CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H,"An Exposed IOCTL with Insufficient Access Control vulnerability [CWE-782] vulnerability in Fortinet FortiClientWindows 7.4.0 through 7.4.3, FortiClientWindows 7.2.0 through 7.2.9 may allow an authenticated local user to execute unauthorized code via fortips driver.  Success of the attack would require bypassing the Windows memory protections such as Heap integrity and HSP. In addition, it requires a valid and running VPN IPSec connection.",CWE-782,0,
 CVE-2025-54660,SDWAN,2025-11-18 17:16:03.270000+00:00,2025,Fortinet,5.5,MEDIUM,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N,"An active debug code vulnerability in Fortinet FortiClientWindows 7.4.0 through 7.4.3, FortiClientWindows 7.2.0 through 7.2.10, FortiClientWindows 7.0 all versions may allow a local attacker to run the application step by step and retrieve the saved VPN user password",CWE-489,0,
 CVE-2025-62631,SDWAN,2025-12-09 18:16:03.850000+00:00,2025,Fortinet,5.6,MEDIUM,CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L,"An insufficient session expiration vulnerability [CWE-613] vulnerability in Fortinet FortiOS 7.4.0, FortiOS 7.2 all versions, FortiOS 7.0 all versions, FortiOS 6.4 all versions allows attacker to maintain access to network resources via an active SSLVPN session not terminated after a user's password change under particular conditions outside of the attacker's control",CWE-613,0,
+CVE-2025-34290,SDWAN,2025-12-20 20:15:50.553000+00:00,2025,Versa Networks,,UNKNOWN,,"Versa SASE Client for Windows versions released between 7.8.7 and 7.9.4 contain a local privilege escalation vulnerability in the audit log export functionality. The client communicates user-controlled file paths to a privileged service, which performs file system operations without impersonating the requesting user. Due to improper privilege handling and a time-of-check time-of-use race condition combined with symbolic link and mount point manipulation, a local authenticated attacker can coerce the service into deleting arbitrary directories with SYSTEM privileges. This can be exploited to delete protected system folders such as C:\\Config.msi and subsequently achieve execution as NT AUTHORITY\\SYSTEM via MSI rollback techniques.","CWE-250,CWE-367",0,
 CVE-2025-37181,SDWAN,2026-01-14 17:16:05.497000+00:00,2026,HPE Aruba,7.2,HIGH,CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H,"Vulnerabilities in the web-based management interface of EdgeConnect SD-WAN Orchestrator could allow an authenticated remote attacker to perform SQL injection attacks. Successful  exploitation could allow an attacker to execute arbitrary SQL commands on the underlying database, potentially leading to unauthorized data access or data manipulation.",CWE-89,0,
 CVE-2025-37182,SDWAN,2026-01-14 17:16:06.030000+00:00,2026,HPE Aruba,7.2,HIGH,CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H,"Vulnerabilities in the web-based management interface of EdgeConnect SD-WAN Orchestrator could allow an authenticated remote attacker to perform SQL injection attacks. Successful  exploitation could allow an attacker to execute arbitrary SQL commands on the underlying database, potentially leading to unauthorized data access or data manipulation.",CWE-89,0,
 CVE-2025-37183,SDWAN,2026-01-14 17:16:06.163000+00:00,2026,HPE Aruba,7.2,HIGH,CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H,"Vulnerabilities in the web-based management interface of EdgeConnect SD-WAN Orchestrator could allow an authenticated remote attacker to perform SQL injection attacks. Successful  exploitation could allow an attacker to execute arbitrary SQL commands on the underlying database, potentially leading to unauthorized data access or data manipulation.",CWE-89,0,
@@ -953,6 +1067,61 @@ CVE-2026-0300,SDWAN,2026-05-06 19:16:35.730000+00:00,2026,Palo Alto Networks,9.8
 The risk of this issue is greatly reduced if you secure access to the User-ID™ Authentication Portal per the  best practice guidelines https://knowledgebase.paloaltonetworks.com/KCSArticleDetail  by restricting access to only trusted internal IP addresses.
 
 Prisma Access, Cloud NGFW and Panorama appliances are not impacted by this vulnerability.",CWE-787,0,
+CVE-2026-43315,SDWAN,2026-05-08 14:16:39.977000+00:00,2026,Versa Networks,5.5,MEDIUM,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H,"In the Linux kernel, the following vulnerability has been resolved:
+
+KVM: nSVM: Remove a user-triggerable WARN on nested_svm_load_cr3() succeeding
+
+Drop the WARN in svm_set_nested_state() on nested_svm_load_cr3() failing
+as it is trivially easy to trigger from userspace by modifying CPUID after
+loading CR3.  E.g. modifying the state restoration selftest like so:
+
+  --- tools/testing/selftests/kvm/x86/state_test.c
+  +++ tools/testing/selftests/kvm/x86/state_test.c
+  @@ -280,7 +280,16 @@ int main(int argc, char *argv[])
+
+                 /* Restore state in a new VM.  */
+                  vcpu = vm_recreate_with_one_vcpu(vm);
+  -               vcpu_load_state(vcpu, state);
+  +
+  +               if (stage == 4) {
+  +                       state->sregs.cr3 = BIT(44);
+  +                       vcpu_load_state(vcpu, state);
+  +
+  +                       vcpu_set_cpuid_property(vcpu, X86_PROPERTY_MAX_PHY_ADDR, 36);
+  +                       __vcpu_nested_state_set(vcpu, &state->nested);
+  +               } else {
+  +                       vcpu_load_state(vcpu, state);
+  +               }
+
+                  /*
+                   * Restore XSAVE state in a dummy vCPU, first without doing
+
+generates:
+
+  WARNING: CPU: 30 PID: 938 at arch/x86/kvm/svm/nested.c:1877 svm_set_nested_state+0x34a/0x360 [kvm_amd]
+  Modules linked in: kvm_amd kvm irqbypass [last unloaded: kvm]
+  CPU: 30 UID: 1000 PID: 938 Comm: state_test Tainted: G        W           6.18.0-rc7-58e10b63777d-next-vm
+  Tainted: [W]=WARN
+  Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 0.0.0 02/06/2015
+  RIP: 0010:svm_set_nested_state+0x34a/0x360 [kvm_amd]
+  Call Trace:
+   <TASK>
+   kvm_arch_vcpu_ioctl+0xf33/0x1700 [kvm]
+   kvm_vcpu_ioctl+0x4e6/0x8f0 [kvm]
+   __x64_sys_ioctl+0x8f/0xd0
+   do_syscall_64+0x61/0xad0
+   entry_SYSCALL_64_after_hwframe+0x4b/0x53
+
+Simply delete the WARN instead of trying to prevent userspace from shoving
+""illegal"" state into CR3.  For better or worse, KVM's ABI allows userspace
+to set CPUID after SREGS, and vice versa, and KVM is very permissive when
+it comes to guest CPUID.  I.e. attempting to enforce the virtual CPU model
+when setting CPUID could break userspace.  Given that the WARN doesn't
+provide any meaningful protection for KVM or benefit for userspace, simply
+drop it even though the odds of breaking userspace are minuscule.
+
+Opportunistically delete a spurious newline.",,0,
+CVE-2026-45028,SDWAN,2026-05-13 16:17:00.173000+00:00,2026,Versa Networks,6.1,MEDIUM,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N,"Astro is a web framework. Astro versions prior to 6.1.10 used AES-GCM encryption to protect the confidentiality and integrity of server island props and slots parameters, but did not bind the ciphertext to its intended component or parameter type. An attacker could replay one component's encrypted props (p) value as another component's slots (s) value, or vice versa. Since slots contain raw unescaped HTML while props may contain user-controlled values, this could lead to XSS in applications. This occurs when the application uses server islands, two different server island components share the same key name for a prop and a slot, and an attacker has full control over the value of the overlapping prop (requires a dynamically rendered page). This vulnerability is fixed in 6.1.10.","CWE-323,CWE-79",0,
 CVE-2026-0263,SDWAN,2026-05-13 18:16:14.003000+00:00,2026,Palo Alto Networks,,UNKNOWN,,"A buffer overflow vulnerability in the IKEv2 processing of Palo Alto Networks PAN-OS® software allows an unauthenticated network-based attacker to execute arbitrary code with elevated privileges on the firewall, or cause a denial of service (DoS) condition.
 
 
@@ -1016,6 +1185,57 @@ This vulnerability exists because of a failure to redact sensitive information w
 CVE-2026-20224,SDWAN,2026-05-14 17:16:20.353000+00:00,2026,Cisco,8.6,HIGH,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N,"A vulnerability in the web UI of Cisco Catalyst SD-WAN Manager, formerly SD-WAN vManage, could allow an unauthenticated, remote attacker to read arbitrary files that are stored in an affected system. The attacker does not need to have valid user credentials.
 
 This vulnerability is due to improper handling of XML External Entity (XXE) entries when parsing an XML file. An attacker could exploit this vulnerability by sending a crafted request to an affected system. A successful exploit could allow the attacker to read arbitrary files that are stored in the affected system.",CWE-20,0,
+CVE-2026-45844,SDWAN,2026-05-27 11:16:23.847000+00:00,2026,Versa Networks,5.5,MEDIUM,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H,"In the Linux kernel, the following vulnerability has been resolved:
+
+netfilter: arp_tables: fix IEEE1394 ARP payload parsing
+
+Weiming Shi says:
+
+""arp_packet_match() unconditionally parses the ARP payload assuming two
+hardware addresses are present (source and target). However,
+IPv4-over-IEEE1394 ARP (RFC 2734) omits the target hardware address
+field, and arp_hdr_len() already accounts for this by returning a
+shorter length for ARPHRD_IEEE1394 devices.
+
+As a result, on IEEE1394 interfaces arp_packet_match() advances past a
+nonexistent target hardware address and reads the wrong bytes for both
+the target device address comparison and the target IP address. This
+causes arptables rules to match against garbage data, leading to
+incorrect filtering decisions: packets that should be accepted may be
+dropped and vice versa.
+
+The ARP stack in net/ipv4/arp.c (arp_create and arp_process) already
+handles this correctly by skipping the target hardware address for
+ARPHRD_IEEE1394. Apply the same pattern to arp_packet_match().""
+
+Mangle the original patch to always return 0 (no match) in case user
+matches on the target hardware address which is never present in
+IEEE1394.
+
+Note that this returns 0 (no match) for either normal and inverse match
+because matching in the target hardware address in ARPHRD_IEEE1394 has
+never been supported by arptables. This is intentional, matching on the
+target hardware address should never evaluate true for ARPHRD_IEEE1394.
+
+Moreover, adjust arpt_mangle to drop the packet too as AI suggests:
+
+In arpt_mangle, the logic assumes a standard ARP layout. Because
+IEEE1394 (FireWire) omits the target hardware address, the linear
+pointer arithmetic miscalculates the offset for the target IP address.
+This causes mangling operations to write to the wrong location, leading
+to packet corruption. To ensure safety, this patch drops packets
+(NF_DROP) when mangling is requested for these fields on IEEE1394
+devices, as the current implementation cannot correctly map the FireWire
+ARP payload.
+
+This omits both mangling target hardware and IP address. Even if IP
+address mangling should be possible in IEEE1394, this would require
+to adjust arpt_mangle offset calculation, which has never been
+supported.
+
+Based on patch from Weiming Shi <bestswngs@gmail.com>.",,0,
+CVE-2026-42082,SDWAN,2026-05-27 17:16:35.180000+00:00,2026,Versa Networks,3.7,LOW,CVSS:3.1/AV:A/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:L,"free5GC is an open-source implementation of the 5G core network. Prior to 4.2.2, the AMF in Free5GC does not enforce the concurrent security procedure rules defined in 3GPP TS 33.501 §6.9.5.1. The AMF does not check for ongoing N2 handover procedures before initiating a NAS Security Mode Command, and vice versa. This can lead to mismatches between NAS and AS security contexts in the network and the UE. This vulnerability is fixed in 4.2.2.",CWE-358,0,
+CVE-2026-44474,SDWAN,2026-05-27 17:16:39.220000+00:00,2026,Versa Networks,3.7,LOW,CVSS:3.1/AV:A/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:L,"Ella Core is a 5G core designed for private networks. Prior to 1.10.0, Ella Core didn't enforce security rules on concurrent running of security procedures defined in TS 33.501 §6.9.5.1 — it could send a NAS Security Mode Command while an N2 handover was still pending (and vice versa). Concurrent Security Mode Command and N2 handover produce a KgNB mismatch between the UE and target gNB, causing the handover to fail. Requires a stalled gNB + re-registration race to trigger. This vulnerability is fixed in 1.10.0.",CWE-358,0,
 CVE-2026-20245,SDWAN,2026-06-04 23:17:31.763000+00:00,2026,Cisco,7.8,HIGH,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H,"A vulnerability in the CLI of Cisco Catalyst SD-WAN Controller, formerly SD-WAN vSmart, Cisco Catalyst SD-WAN Manager, formerly SD-WAN vManage, and Cisco Catalyst SD-WAN Validator, formerly SD-WAN vBond, could allow an authenticated, local attacker to execute arbitrary commands as root by supplying a crafted file to the affected system.
 
 This vulnerability is due to insufficient validation of user-supplied input. An attacker could exploit this vulnerability by uploading a crafted file to the affected system. A successful exploit could allow the attacker to perform command injection attacks on an affected system and elevate their privileges as the root user.&nbsp;

@@ -131,8 +131,8 @@
 
     /* ── Charts grid ── */
     .charts-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 16px;
       margin-bottom: 32px;
     }
@@ -141,56 +141,36 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
+      width: 100%;
     }
-    .chart-card.wide { grid-column: 1 / -1; }
     .chart-card img  { width: 100%; display: block; }
     .chart-card p    { font-size: 0.8rem; color: var(--muted); padding: 10px 14px; border-top: 1px solid var(--border); }
 
     /* ── Vendors table ── */
     .vendors-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
       margin-bottom: 32px;
     }
     .vendor-chip {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 10px 14px;
-      font-size: 0.875rem;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.78rem;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      white-space: nowrap;
     }
     .vendor-chip::before {
       content: "";
-      width: 7px; height: 7px;
+      width: 6px; height: 6px;
       border-radius: 50%;
       background: var(--blue);
       flex-shrink: 0;
     }
-
-    /* ── How it works ── */
-    .pipeline {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px 28px;
-      margin-bottom: 32px;
-      display: flex;
-      align-items: center;
-      gap: 0;
-      flex-wrap: wrap;
-    }
-    .pipe-step {
-      text-align: center;
-      padding: 0 16px;
-    }
-    .pipe-step .icon { font-size: 1.4rem; margin-bottom: 4px; }
-    .pipe-step .name { font-size: 0.8rem; font-weight: 600; }
-    .pipe-step .desc { font-size: 0.72rem; color: var(--muted); }
-    .pipe-arrow { color: var(--muted); font-size: 1.2rem; padding: 0 4px; }
 
     /* ── Footer ── */
     footer {
@@ -276,7 +256,7 @@
   <!-- Charts -->
   <h3>Preview charts</h3>
   <div class="charts-grid">
-    <div class="chart-card wide">
+    <div class="chart-card">
       <img src="charts/sdwan_cve_trend.png" alt="Annual CVE trend by severity" onerror="this.parentElement.style.display='none'"/>
       <p>Annual CVE count stacked by severity (Critical / High / Medium / Low)</p>
     </div>
@@ -295,46 +275,6 @@
     <div class="chart-card">
       <img src="charts/sdwan_top_cwes.png" alt="Top CWEs" onerror="this.parentElement.style.display='none'"/>
       <p>Top 15 weakness types (CWE) across all SD-WAN CVEs</p>
-    </div>
-  </div>
-
-  <!-- How it works -->
-  <h3>How it works</h3>
-  <div class="pipeline">
-    <div class="pipe-step">
-      <div class="icon">🌐</div>
-      <div class="name">NIST NVD</div>
-      <div class="desc">API 2.0 source</div>
-    </div>
-    <div class="pipe-arrow">→</div>
-    <div class="pipe-step">
-      <div class="icon">⬇️</div>
-      <div class="name">01_ingest.py</div>
-      <div class="desc">Incremental fetch</div>
-    </div>
-    <div class="pipe-arrow">→</div>
-    <div class="pipe-step">
-      <div class="icon">🔍</div>
-      <div class="name">02_filter.py</div>
-      <div class="desc">SD-WAN classification</div>
-    </div>
-    <div class="pipe-arrow">→</div>
-    <div class="pipe-step">
-      <div class="icon">📊</div>
-      <div class="name">03_analyze.py</div>
-      <div class="desc">Chart generation</div>
-    </div>
-    <div class="pipe-arrow">→</div>
-    <div class="pipe-step">
-      <div class="icon">📥</div>
-      <div class="name">04_excel_report.py</div>
-      <div class="desc">Excel report</div>
-    </div>
-    <div class="pipe-arrow">→</div>
-    <div class="pipe-step">
-      <div class="icon">🤖</div>
-      <div class="name">GitHub Actions</div>
-      <div class="desc">Runs every Monday</div>
     </div>
   </div>
 

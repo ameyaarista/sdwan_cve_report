@@ -65,10 +65,11 @@ def is_relevant(description: str, vendors: list[str], family_cfg: dict) -> bool:
     if not vendors:
         return False
 
-    unambiguous   = family_cfg["unambiguous"]
-    vendor_checks = family_cfg["vendor_checks"]
-    default_check = family_cfg["default_check"]
-    generic       = family_cfg.get("generic_pattern")
+    unambiguous     = family_cfg["unambiguous"]
+    vendor_checks   = family_cfg["vendor_checks"]
+    vendor_excludes = family_cfg.get("vendor_excludes", {})
+    default_check   = family_cfg["default_check"]
+    generic         = family_cfg.get("generic_pattern")
 
     # Generic catch-all (e.g. "sd-wan" in description)
     if generic and generic.search(description) and "Generic" in vendors:
@@ -76,6 +77,10 @@ def is_relevant(description: str, vendors: list[str], family_cfg: dict) -> bool:
 
     for v in vendors:
         if v == "Generic":
+            continue
+        # Reject if description matches an exclude pattern for this vendor
+        excl = vendor_excludes.get(v)
+        if excl and excl.search(description):
             continue
         if v in unambiguous:
             return True

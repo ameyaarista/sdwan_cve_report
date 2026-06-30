@@ -109,6 +109,10 @@ FAMILIES: dict[str, dict] = {
             "Fortinet":           _FORTI_SDWAN,
             "Palo Alto Networks": _PALO_SDWAN,
         },
+        # Reject CVEs matching these patterns even if vendor_checks passes
+        "vendor_excludes": {
+            "Palo Alto Networks": re.compile(r"\bglobalprotect\b", re.IGNORECASE),
+        },
         # Fallback for Cisco, Juniper — need explicit SD-WAN term
         "default_check": re.compile(
             r"sd[\s-]?wan|viptela|vedge|vmanage|vsmart|vbond|"

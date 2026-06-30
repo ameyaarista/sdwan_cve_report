@@ -68,6 +68,8 @@ _SDWAN_VENDORS = [
     ("Arista", [
         r"vmware\s+sd[\s-]?wan", r"\bvelocloud\b", r"broadcom\s+sd[\s-]?wan",
         r"arista\s+sd[\s-]?wan",
+        r"velocloud\s+orchestrator", r"velocloud\s+gateway", r"velocloud\s+edge",
+        r"nsx[\s-]?t\s+sd[\s-]?wan", r"nsxt\s+sd[\s-]?wan",
     ]),
     # FortiGate IS the SD-WAN appliance — broad match, filtered by _FORTI_SDWAN
     ("Fortinet", [

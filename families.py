@@ -78,10 +78,6 @@ _SDWAN_VENDORS = [
         r"prisma\s+sd[\s-]?wan", r"\bcloudgenix\b", r"palo\s+alto.*sd[\s-]?wan",
         r"\bpan[\s-]?os\b", r"palo\s+alto\s+networks",
     ]),
-    ("Juniper", [
-        r"juniper.*sd[\s-]?wan", r"session\s+smart\s+router",
-        r"128\s+technology", r"128t\s+router", r"juniper.*wan\s+assurance",
-    ]),
     ("HPE Aruba", [
         r"silver\s+peak", r"hpe.*edgeconnect",
         r"aruba.*edgeconnect", r"aruba.*sd[\s-]?wan", r"edgeconnect\s+sd[\s-]?wan",
@@ -119,7 +115,7 @@ FAMILIES: dict[str, dict] = {
         # Fallback for Cisco, Juniper — need explicit SD-WAN term
         "default_check": re.compile(
             r"sd[\s-]?wan|viptela|vedge|vmanage|vsmart|vbond|"
-            r"velocloud|session\s+smart|128t|cloudgenix|edgeconnect|"
+            r"velocloud|cloudgenix|edgeconnect|"
             r"versaos|flexvnf|\badvpn\b",
             re.IGNORECASE,
         ),

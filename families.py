@@ -111,7 +111,10 @@ FAMILIES: dict[str, dict] = {
         },
         # Reject CVEs matching these patterns even if vendor_checks passes
         "vendor_excludes": {
-            "Palo Alto Networks": re.compile(r"\bglobalprotect\b", re.IGNORECASE),
+            "Palo Alto Networks": re.compile(
+                r"\bglobal[\s-]?protect\b|\bcortex\b|\bcortex[\s-]?xdr\b",
+                re.IGNORECASE
+            ),
         },
         # Fallback for Cisco, Juniper — need explicit SD-WAN term
         "default_check": re.compile(

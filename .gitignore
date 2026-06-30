@@ -16,6 +16,10 @@ venv/
 sdwan_report.xlsx
 reports/
 
+# But allow the docs/ outputs committed by GitHub Actions
+!docs/sdwan_report.xlsx
+!docs/charts/
+
 # macOS
 .DS_Store
 

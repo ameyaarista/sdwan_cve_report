@@ -70,10 +70,8 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          echo "--- .gitignore contents ---"
-          cat .gitignore
-          echo "--- checking ignore status ---"
-          git check-ignore -v docs/sdwan_report.xlsx || echo "not ignored"
-          git add -f docs/sdwan_report.xlsx docs/charts/ docs/last_updated.json
+          # Remove any xlsx ignore rules so docs/sdwan_report.xlsx can be committed
+          sed -i '/xlsx/d' .gitignore
+          git add docs/sdwan_report.xlsx docs/charts/ docs/last_updated.json
           git diff --cached --quiet || git commit -m "chore: update SD-WAN CVE report [$(date -u '+%Y-%m-%d')]"
           git push

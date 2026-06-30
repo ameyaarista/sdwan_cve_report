@@ -36,6 +36,21 @@ jobs:
           restore-keys: |
             cve-databases-
 
+      # ── Rename VMware → Arista in cached analysis.db (one-time migration) ─
+      - name: Migrate vendor name VMware → Arista in analysis.db
+        run: |
+          python3 - <<'EOF'
+          import sqlite3, os
+          if not os.path.exists("analysis.db"):
+              print("No analysis.db yet — skipping migration")
+          else:
+              conn = sqlite3.connect("analysis.db")
+              cur = conn.execute("UPDATE filtered_cves SET vendors = REPLACE(vendors, 'VMware', 'Arista') WHERE vendors LIKE '%VMware%'")
+              conn.commit()
+              print(f"Migrated {cur.rowcount} rows: VMware → Arista")
+              conn.close()
+          EOF
+
       # ── Pipeline ──────────────────────────────────────────────────────────
       - name: Step 1 — Ingest CVEs from NVD
         env:

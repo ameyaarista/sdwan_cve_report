@@ -52,8 +52,9 @@ _SDWAN_VENDORS = [
         r"cisco\s+ios[\s-]?xe\s+sd[\s-]?wan",
         r"cisco\s+vedge", r"\bvmanage\b", r"\bvsmart\b", r"\bvbond\b",
     ]),
-    ("VMware", [
+    ("Arista", [
         r"vmware\s+sd[\s-]?wan", r"\bvelocloud\b", r"broadcom\s+sd[\s-]?wan",
+        r"arista\s+sd[\s-]?wan",
     ]),
     # FortiGate IS the SD-WAN appliance — broad match, filtered by _FORTI_SDWAN
     ("Fortinet", [
@@ -92,7 +93,7 @@ FAMILIES: dict[str, dict] = {
         "display_name":  "SD-WAN",
         "vendors":       _SDWAN_VENDORS,
         # These vendors exclusively make SD-WAN products — no secondary check needed
-        "unambiguous":   {"VMware", "Palo Alto Networks", "Versa Networks",
+        "unambiguous":   {"Arista", "Palo Alto Networks", "Versa Networks",
                           "Cradlepoint", "Aryaka", "HPE Aruba", "Barracuda"},
         # Per-vendor secondary check for broad-name vendors
         "vendor_checks": {"Fortinet": _FORTI_SDWAN},

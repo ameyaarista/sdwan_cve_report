@@ -53,6 +53,7 @@ jobs:
 
       # ── Pipeline ──────────────────────────────────────────────────────────
       - name: Step 1 — Ingest CVEs from NVD
+        continue-on-error: true
         env:
           NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: python3 01_ingest.py

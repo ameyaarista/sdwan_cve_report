@@ -23,6 +23,19 @@ import re
 # Fortinet SD-WAN component regex
 # ─────────────────────────────────────────────────────────────────────────────
 
+# Palo Alto Networks secondary check — PAN-OS networking/SD-WAN components
+_PALO_SDWAN = re.compile(
+    r"\bipsec\b|ike[v\s\d]|\bike\b|\bgre\b|\bmpls\b|"
+    r"ssl[\s-]?vpn|\bvpn\b|vpn\s+(tunnel|peer|gateway|concentrator)|\badvpn\b|"
+    r"overlay\s+(network|tunnel)|\bbgp\b|\bospf\b|\brip\b|is[\s-]is|eigrp|"
+    r"routing\s+protocol|dynamic\s+routing|\bwan\b|"
+    r"\bdns\b|\bdhcp\b|\bntp\b|\bsnmp\b|"
+    r"traffic\s+(shaping|policing|steering|classif)|\bqos\b|"
+    r"\bnat\b|\bsnat\b|\bdnat\b|"
+    r"sd[\s-]?wan|zero[\s-]?trust|\bpanos\b|pan[\s-]os",
+    re.IGNORECASE,
+)
+
 # FortiGate IS the SD-WAN appliance — broad match filtered by this secondary check
 _FORTI_SDWAN = re.compile(
     r"\bipsec\b|ike[v\s\d]|\bike\b|\bgre\b|gre\s+tunnel|\bvxlan\b|\bmpls\b|"
@@ -63,6 +76,7 @@ _SDWAN_VENDORS = [
     ]),
     ("Palo Alto Networks", [
         r"prisma\s+sd[\s-]?wan", r"\bcloudgenix\b", r"palo\s+alto.*sd[\s-]?wan",
+        r"\bpan[\s-]?os\b", r"palo\s+alto\s+networks",
     ]),
     ("Juniper", [
         r"juniper.*sd[\s-]?wan", r"session\s+smart\s+router",
@@ -76,10 +90,6 @@ _SDWAN_VENDORS = [
         r"versa\s+networks", r"versa\s+flexvnf",
         r"versa\s+sd[\s-]?wan", r"\bversaos\b",
     ]),
-    ("Cradlepoint", [r"\bcradlepoint\b"]),
-    ("Aryaka",      [r"\baryaka\b"]),
-    ("Citrix",      [r"citrix\s+sd[\s-]?wan", r"netscaler\s+sd[\s-]?wan"]),
-    ("Barracuda",   [r"barracuda.*cloudgen\s+wan", r"barracuda.*sd[\s-]?wan"]),
     ("Generic",     [r"\bsd[\s-]?wan\b"]),
 ]
 
@@ -93,11 +103,13 @@ FAMILIES: dict[str, dict] = {
         "display_name":  "SD-WAN",
         "vendors":       _SDWAN_VENDORS,
         # These vendors exclusively make SD-WAN products — no secondary check needed
-        "unambiguous":   {"Arista", "Palo Alto Networks", "Versa Networks",
-                          "Cradlepoint", "Aryaka", "HPE Aruba", "Barracuda"},
+        "unambiguous":   {"Arista", "Versa Networks", "HPE Aruba"},
         # Per-vendor secondary check for broad-name vendors
-        "vendor_checks": {"Fortinet": _FORTI_SDWAN},
-        # Fallback for Cisco, Juniper, Citrix — need explicit SD-WAN term
+        "vendor_checks": {
+            "Fortinet":           _FORTI_SDWAN,
+            "Palo Alto Networks": _PALO_SDWAN,
+        },
+        # Fallback for Cisco, Juniper — need explicit SD-WAN term
         "default_check": re.compile(
             r"sd[\s-]?wan|viptela|vedge|vmanage|vsmart|vbond|"
             r"velocloud|session\s+smart|128t|cloudgenix|edgeconnect|"
